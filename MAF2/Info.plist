@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requests location information</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requests location information</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requests location information</string>
 	<key>Allow Arbitrary Loads</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -26,8 +32,6 @@
 	<string>5a72efe8c06f90201e562f28</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -35,8 +39,6 @@
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>This app uses bluetooth data.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app automatically zooms into your location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -2,9 +2,10 @@ import UIKit
 import DJISDK
 import DJIWidget
 import MapKit
+import CoreLocation
 import DJIUXSDK
 
-class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
+class RunMissionViewController: UIViewController, CLLocationManagerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate {
     
     // the states based on the raw values
     let operatorStateNames = [
@@ -22,25 +23,27 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var operatorStateLabel: UILabel!
     @IBOutlet weak var logTextView: UITextView!
     @IBOutlet weak var clearTheWaypoints: RoundButton!
-    
     @IBOutlet weak var loadTheMission: RoundButton!
-    
     @IBOutlet weak var startTheMission: RoundButton!
     
-    
+    @IBOutlet weak var longitudeDisp: UILabel!
+    @IBOutlet weak var latitudeDisp: UILabel!
+    @IBOutlet weak var missionType: UIPickerView!
+    @IBOutlet weak var centerOnLocation: RoundButton!
     
     var uiUpdateTimer: Timer!
+    var pickerData: [String] = [String]()
     
     // lat and log variables
-    let currentLat = 45.307067  // newberg ore
-    let currentLong = -122.96015
+    var currentLat = 45.307067  // newberg ore
+    var currentLong = -122.96015
     // the region of the map that's it automatically zoomed into.
     let regionRadius: CLLocationDistance = 200
     // the mission for the to add the waypoints to
     let mission:DJIMutableWaypointMission = DJIMutableWaypointMission.init()
     
     // to zoom in on user location
-    let locationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
 
     // print out info to a text box inside the app
     func debugPrint(_ text: String) {
@@ -52,23 +55,45 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
-        centerMapOnLocation(location: initialLocation)
+        if (self.mapView != nil)
+        {
+            mapView.delegate = self
+            self.locationManager.requestWhenInUseAuthorization()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+            centerMapOnLocation(location: initialLocation)
+        }
         
-        // make the start button hidden until the mission has loaded
-        self.startTheMission.isHidden = true
+        //Hide the start button until the mission has loaded
+        if (self.startTheMission != nil)
+        {
+            self.startTheMission.isHidden = true
+        }
         
+        //If in location config screen, initialize picker data
+        if (self.missionType != nil)
+        {
+            self.missionType.delegate = self
+            self.missionType.dataSource = self
+            
+            pickerData = ["Altitude: 50ft", "Altitude: 100ft", "Altitude: 200ft"]
+        }
         
-        // call the method to zoom into the users current location
-//        zoomUserLocation(locationManager)
+        if (self.latitudeDisp != nil && self.longitudeDisp != nil)
+        {
+            latitudeDisp.text = String(currentLat)
+            longitudeDisp.text = String(currentLong)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // output the state to the app updating it every second
+        // Output the state to the app updating it every second
         uiUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
             guard let missionControl = DJISDKManager.missionControl() else { return }
-            guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else { return }
+            let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator()
             
             DispatchQueue.main.async {
                 self.operatorStateLabel.text = String(format: "Operator State: %@",
@@ -76,9 +101,11 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
         
-        // inform the user how to add a waypoint
-        self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
-        
+        // Inform the user how to add a waypoint
+        if (self.startTheMission != nil)
+        {
+            self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,10 +113,40 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         uiUpdateTimer.invalidate()
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location: CLLocationCoordinate2D = manager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 45.307067, longitude: -122.96015)
+        currentLat = location.latitude
+        currentLong = location.longitude
+    }
+    
+    func centerOnLocation(_ sender: Any)
+    {
+        zoomUserLocation(locationManager)
+        print("ran the damn function")
+        let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        centerMapOnLocation(location: initialLocation)
+    }
+    
     // zoom the map in to the location that we choose. Right now it is hard coded for newberg OR
     func centerMapOnLocation(location: CLLocation) {
+        print("spicy2")
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        print("spicy2")
         mapView.setRegion(coordinateRegion, animated: true)
+        print("spicy2")
 
         // make that map satellite view
         mapView.mapType = MKMapType.satellite
@@ -97,27 +154,56 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 
     
     func zoomUserLocation(_ manager: CLLocationManager) {
+        print("spicy3")
         guard let currentLocation: CLLocationCoordinate2D = manager.location?.coordinate else {
             return
         }
+        print("spicy3")
+        currentLat = currentLocation.latitude
+        currentLong = currentLocation.longitude
+        print("spicy3")
+        print(currentLat)
 
         mapView.setCenter(currentLocation, animated: true)
     }
-    
-    
+    var locationTextField: UITextField?
+    @IBAction func saveMissionDetails(_ sender: RoundButton) {
+        let alertController = UIAlertController(title: "alert title", message: "alert message", preferredStyle: .alert)
+        
+        alertController.addTextField(configurationHandler: handleTextField)
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default, handler: self.submitHandler)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(submitAction)
+        alertController.addAction(cancelAction)
+    }
+    func handleTextField(textField: UITextField)
+    {
+        locationTextField = textField
+        locationTextField?.placeholder = "location"
+    }
+    func submitHandler(alert: UIAlertAction!)
+    {
+        let simpleVC = SimpleVC()
+        simpleVC.customInit(locationString: (locationTextField?.text)!)
+        print("superSpicy")
+        self.navigationController?.pushViewController(simpleVC, animated: true)
+    }
 
-    /* when the map gets a long press, it adds a waypoint. There is a maximum of
-     two waypoints that the user cfan add. Later on, we add the rest of the waypoints
-     automatically to create the "box" shape. */
+    /* Adds a waypoint when the map gets a long press.
+     A maximum of two waypoints can be added by the user. Later, the rest of the waypoints are added to fill in the rectangle. */
     @IBAction func longPressAddWayPoint(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        // TODO: when create box, I have this as 4. For testing purposes, it is now 100
+        print("Starting longPressAddWayPoint()...")
+        
         let MAX_WAYPOINT_NUM = 2
         
-        if gestureRecognizer.state == UIGestureRecognizer.State.began {
+        if gestureRecognizer.state == UIGestureRecognizer.State.began
+        {
             let touchPoint: CGPoint = gestureRecognizer.location(in: mapView)
             
             // a max of two waypoints are allowed. If they try to add another, print an error message
-            if (mission.waypointCount < MAX_WAYPOINT_NUM) {
+            if (mission.waypointCount < MAX_WAYPOINT_NUM)
+            {
                 let newCoordinate: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
                 
                 // put a annotation on the map for the user
@@ -125,7 +211,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 
                 // create the waypoint
                 let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-                // set the altitde, auto speed and max speed
+                // set the altitude, auto speed and max speed
                 wayPoint.altitude = 50
                 wayPoint.speed = 10
                 // add the new waypoint
@@ -134,12 +220,12 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 } else {
                     print("Waypoint not valid")
                 }
-            } else {
-            showAlertViewWithTitle(title: "Too many waypoints!", withMessage: "The waypoints you add are the four corners of the box. A max of four are allowed. If you want to adjust the location of the box, push the 'Clear the Waypoints' button and start again. Thanks.")
             }
-            
+            else
+            {
+            showAlertViewWithTitle(title: "Too many waypoints!", withMessage: "The waypoints you add are the two corners of the box. A max of two are allowed. If you want to adjust the location of the box, push the 'Clear the Waypoints' button and start again. Thanks.")
+            }
         }
-    
     }
     
     /* the user longPresses the screen to add two waypoints which are the ends
@@ -147,45 +233,26 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
      width and the only thing the user can change is the length. As of now,
      if the user want to move the box, he must clear all the waypoints and start again. Make the runway approx. 60 meters wide.*/
     func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint]) {
-//         iterate through the waypoints, add the corresponding amount to the lat and long to add a new waypoint in the correct direction.
-        
-        
-//        for corner in cornersOfBox {
-//            // the lat and long for the new waypoint
-//            let sonLat = corner.coordinate.latitude.advanced(by: 0)
-//            let sonLong = corner.coordinate.longitude.advanced(by: 0.0004)
-//
-//            // the new coordinate based off the new lat and long
-//            let sonCoordinate = CLLocationCoordinate2D(latitude: sonLat, longitude: sonLong)
-//
-//
-            // for testing, add the new annotation on the map
-            self.showAlertViewWithTitle(title: "spicy", withMessage: "Got here.");
-//        addAnnotationOnLocation(pointedCoordinate: sonCoordinate)
-//            }
         
         let x1 = cornersOfBox[0].coordinate.longitude
         let x2 = cornersOfBox[1].coordinate.longitude
         let y1 = cornersOfBox[0].coordinate.latitude
         let y2 = cornersOfBox[1].coordinate.latitude
 
-        let horizontalDistance = abs(x2 - x1)
-        let verticalDistance = abs(y2 - y1)
-
         let numHorizontalPictures: Int = 3
         let numVerticalPictures: Int = 3
 
-        let hSpace = horizontalDistance/Double(numHorizontalPictures)
-        let vSpace = verticalDistance/Double(numVerticalPictures)
+        let hSpace = (x2 - x1)/Double(numHorizontalPictures-1)
+        let vSpace = (y2 - y1)/Double(numVerticalPictures-1)
 
         var xcoord: CLLocationDegrees
         var ycoord: CLLocationDegrees
         var newCoord = CLLocationCoordinate2D(latitude: 0, longitude: 0)
 
-        for i in 0...(numHorizontalPictures - 1)
+        for i in 0...(numHorizontalPictures-1)
         {
             xcoord = x1 + Double(i) * hSpace
-            for j in 0...(numVerticalPictures - 1)
+            for j in 0...(numVerticalPictures-1)
             {
                 if (i % 2 == 0)
                 {
@@ -195,10 +262,18 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 {
                     ycoord = y2 - Double(j) * vSpace
                 }
-                newCoord = CLLocationCoordinate2D(latitude: xcoord, longitude: ycoord)
-                addAnnotationOnLocation(pointedCoordinate: newCoord)
+                newCoord = CLLocationCoordinate2D(latitude: ycoord, longitude: xcoord)
+                
+                print("Latitude: \(newCoord.latitude) \nLongitude:  \(newCoord.longitude)")
+                
+                addAnnotationOnLocation(pointedCoordinate: newCoord, waypointName: String(i*numVerticalPictures + j))
+                let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
+                waypoint.altitude = 50
+                waypoint.speed = 10
+                mission.add(waypoint)
             }
         }
+        print("...Finished addWaypointsInBoxShape()")
     }
     
     
@@ -213,17 +288,24 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // adds the waypoint symbol on the map
-    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D) {
+    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D, waypointName: String = "waypoint") {
+        print("Starting addAnnotationOnLocation()...")
+        
         let annotation = MKPointAnnotation()
         annotation.coordinate = pointedCoordinate
-        annotation.title = "waypoint"
+        annotation.title = waypointName
+        
         mapView.addAnnotation(annotation)
+        
+        
+        print("... finished addAnnotationsOnLocation()")
     }
     
 
     
     // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
     @IBAction func loadTheMission(_ sender: Any) {
+        print("~~~~~\nStarting loadTheMission...")
         let MIN_WAYPOINT_NUM = 2
         print("spicy!")
         
@@ -232,8 +314,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             showAlertViewWithTitle(title: "Two waypoints are required", withMessage: "You must add markers which are the corners of the box.")
         } else {
             // call the method to create a "box" shape of waypoints
-            showAlertViewWithTitle(title: "spicy", withMessage: "super spicy")
             addWaypointsInBoxShape(cornersOfBox: mission.allWaypoints())
+            showAlertViewWithTitle(title: "spicy", withMessage: "super spicy") // I moved the alert to after to only see this after the waypoints should've been calculated
+            print("just finished addWaypointsInBoxShape()")
         }
         
         
@@ -253,6 +336,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 
         guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
+            
             return
         }
         
@@ -311,6 +395,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 } as DJICompletionBlock)
             }
         }
+        print("...Finished loadTheMission()")
     }
     // button to start the mission once it's loaded
     
@@ -353,9 +438,12 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
     // show the message as a pop up window in the app
     func showAlertViewWithTitle(title:String, withMessage message:String ) {
+        print("Starting showAlertViewWithTitle()...")
+        
         let alert:UIAlertController = UIAlertController(title:title, message:message, preferredStyle:UIAlertController.Style.alert)
         let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
         alert.addAction(okAction)
         self.present(alert, animated:true, completion:nil)
+        print("...Finished showAlertWithTitle()")
     }
 }
