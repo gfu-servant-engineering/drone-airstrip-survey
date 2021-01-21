@@ -5,7 +5,7 @@ import MapKit
 import CoreLocation
 import DJIUXSDK
 
-class RunMissionViewController: UIViewController, CLLocationManagerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate {
+class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // the states based on the raw values
     let operatorStateNames = [
@@ -26,13 +26,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, UIP
     @IBOutlet weak var loadTheMission: RoundButton!
     @IBOutlet weak var startTheMission: RoundButton!
     
-    @IBOutlet weak var longitudeDisp: UILabel!
-    @IBOutlet weak var latitudeDisp: UILabel!
-    @IBOutlet weak var missionType: UIPickerView!
-    @IBOutlet weak var centerOnLocation: RoundButton!
-    
     var uiUpdateTimer: Timer!
-    var pickerData: [String] = [String]()
     
     // lat and log variables
     var currentLat = 45.307067  // newberg ore
@@ -67,25 +61,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, UIP
         }
         
         //Hide the start button until the mission has loaded
-        if (self.startTheMission != nil)
-        {
-            self.startTheMission.isHidden = true
-        }
-        
-        //If in location config screen, initialize picker data
-        if (self.missionType != nil)
-        {
-            self.missionType.delegate = self
-            self.missionType.dataSource = self
-            
-            pickerData = ["Altitude: 50ft", "Altitude: 100ft", "Altitude: 200ft"]
-        }
-        
-        if (self.latitudeDisp != nil && self.longitudeDisp != nil)
-        {
-            latitudeDisp.text = String(currentLat)
-            longitudeDisp.text = String(currentLong)
-        }
+        self.startTheMission.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,27 +78,12 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, UIP
         })
         
         // Inform the user how to add a waypoint
-        if (self.startTheMission != nil)
-        {
-            self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
-        }
+        self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         uiUpdateTimer.invalidate()
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -165,29 +126,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, UIP
         print(currentLat)
 
         mapView.setCenter(currentLocation, animated: true)
-    }
-    var locationTextField: UITextField?
-    @IBAction func saveMissionDetails(_ sender: RoundButton) {
-        let alertController = UIAlertController(title: "alert title", message: "alert message", preferredStyle: .alert)
-        
-        alertController.addTextField(configurationHandler: handleTextField)
-        
-        let submitAction = UIAlertAction(title: "Submit", style: .default, handler: self.submitHandler)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(submitAction)
-        alertController.addAction(cancelAction)
-    }
-    func handleTextField(textField: UITextField)
-    {
-        locationTextField = textField
-        locationTextField?.placeholder = "location"
-    }
-    func submitHandler(alert: UIAlertAction!)
-    {
-        let simpleVC = SimpleVC()
-        simpleVC.customInit(locationString: (locationTextField?.text)!)
-        print("superSpicy")
-        self.navigationController?.pushViewController(simpleVC, animated: true)
     }
 
     /* Adds a waypoint when the map gets a long press.

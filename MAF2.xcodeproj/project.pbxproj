@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		71881C2AEBA25CB2458C61A4 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB43BD168E3F1887010D8D90 /* Pods_MAF2_MAF2UITests.framework */; };
-		841E218E259D73B200E2A12B /* SimpleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E218C259D73B200E2A12B /* SimpleVC.swift */; };
-		841E218F259D73B200E2A12B /* SimpleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 841E218D259D73B200E2A12B /* SimpleVC.xib */; };
+		841E219125B8E9BA00E2A12B /* ConfigureMissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E219025B8E9BA00E2A12B /* ConfigureMissionController.swift */; };
 		846F33A523F24576002EAA1C /* DroneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F33A423F24576002EAA1C /* DroneControl.swift */; };
 		846F33A723F26586002EAA1C /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F33A623F26586002EAA1C /* ConnectViewController.swift */; };
 		8499544F236E0BFE007D3AF1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499544E236E0BFE007D3AF1 /* RoundButton.swift */; };
@@ -48,8 +47,7 @@
 
 /* Begin PBXFileReference section */
 		38501DFCBDB7E504AE6F8DD5 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		841E218C259D73B200E2A12B /* SimpleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleVC.swift; sourceTree = "<group>"; };
-		841E218D259D73B200E2A12B /* SimpleVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleVC.xib; sourceTree = "<group>"; };
+		841E219025B8E9BA00E2A12B /* ConfigureMissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureMissionController.swift; sourceTree = "<group>"; };
 		845A7E8E24254F0900DC93D6 /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = Pods/DJIWidget/FFmpeg/FFmpeg.framework; sourceTree = "<group>"; };
 		845A7E9224254F5700DC93D6 /* DJIWidget */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DJIWidget; path = Pods/DJIWidget/DJIWidget; sourceTree = "<group>"; };
 		846AD1992425517D0057290B /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = MAF2/DJISDK.framework; sourceTree = "<group>"; };
@@ -149,19 +147,9 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		841E218B259D736000E2A12B /* SimpleVC */ = {
-			isa = PBXGroup;
-			children = (
-				841E218C259D73B200E2A12B /* SimpleVC.swift */,
-				841E218D259D73B200E2A12B /* SimpleVC.xib */,
-			);
-			path = SimpleVC;
-			sourceTree = "<group>";
-		};
 		84D9446E236AA26200FFF8C5 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				841E218B259D736000E2A12B /* SimpleVC */,
 				84D9446F236AA29400FFF8C5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -207,6 +195,7 @@
 				846F33A423F24576002EAA1C /* DroneControl.swift */,
 				84D9446C236AA1B000FFF8C5 /* ContentView.swift */,
 				84D98B972341A0D400433960 /* AppDelegate.swift */,
+				841E219025B8E9BA00E2A12B /* ConfigureMissionController.swift */,
 				84D98B992341A0D400433960 /* CameraViewController.swift */,
 				8499544E236E0BFE007D3AF1 /* RoundButton.swift */,
 				84D98B9E2341A0D400433960 /* Assets.xcassets */,
@@ -360,7 +349,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				841E218F259D73B200E2A12B /* SimpleVC.xib in Resources */,
 				84D9442A236A89A100FFF8C5 /* Main.storyboard in Resources */,
 				84D98BA22341A0D400433960 /* LaunchScreen.storyboard in Resources */,
 				84D98B9F2341A0D400433960 /* Assets.xcassets in Resources */,
@@ -507,9 +495,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E3D012237E88DA001F1C48 /* RunMissionViewController.swift in Sources */,
-				841E218E259D73B200E2A12B /* SimpleVC.swift in Sources */,
 				84D944272369763A00FFF8C5 /* CameraViewController.swift in Sources */,
 				8499544F236E0BFE007D3AF1 /* RoundButton.swift in Sources */,
+				841E219125B8E9BA00E2A12B /* ConfigureMissionController.swift in Sources */,
 				84D98B982341A0D400433960 /* AppDelegate.swift in Sources */,
 				84D9446D236AA1B000FFF8C5 /* ContentView.swift in Sources */,
 				846F33A523F24576002EAA1C /* DroneControl.swift in Sources */,

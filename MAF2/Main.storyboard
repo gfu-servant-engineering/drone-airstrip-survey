@@ -146,7 +146,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="qQn-as-iQm" kind="show" id="xUu-MS-0ag"/>
+                                    <segue destination="FXC-Fx-Yst" kind="show" id="wD2-c6-vGF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-jm-CwW" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
@@ -361,10 +361,10 @@
             </objects>
             <point key="canvasLocation" x="671.65178571428567" y="-26.086956521739133"/>
         </scene>
-        <!--Run Mission View Controller-->
+        <!--Configure Mission Controller-->
         <scene sceneID="woy-mC-7XG">
             <objects>
-                <viewController id="FXC-Fx-Yst" customClass="RunMissionViewController" customModule="MAF2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FXC-Fx-Yst" customClass="ConfigureMissionController" customModule="MAF2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wvk-pv-we1">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -373,12 +373,12 @@
                                 <rect key="frame" x="310" y="44" width="522" height="296"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epa-aF-iMD" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="584" y="348" width="248" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-hs-unz" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="310" y="348" width="248" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save Mission Details">
+                                <state key="normal" title="Center on Current Location">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -386,16 +386,13 @@
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveMissionDetails:" destination="FXC-Fx-Yst" eventType="touchUpInside" id="wlq-KE-ShJ"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-hs-unz" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="310" y="348" width="248" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="588" y="348" width="248" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Center on Current Location">
+                                <state key="normal" title="Save Mission Details">
                                     <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -466,12 +463,12 @@
                         <outlet property="longitudeDisp" destination="F56-3l-GTI" id="PVT-gN-M3R"/>
                         <outlet property="mapView" destination="4pz-zs-9u6" id="5qo-4d-mt8"/>
                         <outlet property="missionType" destination="Y6g-NK-GFQ" id="g3D-yX-aVm"/>
-                        <outlet property="saveMissionDetails" destination="epa-aF-iMD" id="gkF-tf-1aB"/>
+                        <outlet property="saveMissionDetails" destination="PPA-QZ-72g" id="RkN-9M-5CY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osY-dl-51E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="699.77678571428567" y="2024.6376811594205"/>
+            <point key="canvasLocation" x="12.723214285714285" y="2024.6376811594205"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o22-fc-PMM">
@@ -543,25 +540,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJe-aC-8Lu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1033" y="786"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="UQ7-WN-gHo">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qQn-as-iQm" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="4uL-Cl-tnP"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VCV-Uo-keO">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="FXC-Fx-Yst" kind="relationship" relationship="rootViewController" id="NM4-Jp-rzw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dUf-IB-5yt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-43.526785714285715" y="2024.6376811594205"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
