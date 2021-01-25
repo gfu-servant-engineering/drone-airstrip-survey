@@ -49,17 +49,13 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (self.mapView != nil)
-        {
-            mapView.delegate = self
-            self.locationManager.requestWhenInUseAuthorization()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
-            centerMapOnLocation(location: initialLocation)
-        }
-        
+        mapView.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+        let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        centerMapOnLocation(location: initialLocation)
         //Hide the start button until the mission has loaded
         self.startTheMission.isHidden = true
     }
@@ -79,6 +75,18 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         
         // Inform the user how to add a waypoint
         self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+    }
+    
+    func mapView(_ mapview: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer!
+    {
+        if overlay is MKPolyline
+        {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.red
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        return nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -186,6 +194,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         var xcoord: CLLocationDegrees
         var ycoord: CLLocationDegrees
         var newCoord = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        var coords: [CLLocationCoordinate2D] = []
 
         for i in 0...(numHorizontalPictures-1)
         {
@@ -201,8 +210,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                     ycoord = y2 - Double(j) * vSpace
                 }
                 newCoord = CLLocationCoordinate2D(latitude: ycoord, longitude: xcoord)
-                
-                print("Latitude: \(newCoord.latitude) \nLongitude:  \(newCoord.longitude)")
+                coords.append(newCoord)
                 
                 addAnnotationOnLocation(pointedCoordinate: newCoord, waypointName: String(i*numVerticalPictures + j))
                 let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
@@ -211,7 +219,8 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                 mission.add(waypoint)
             }
         }
-        print("...Finished addWaypointsInBoxShape()")
+        let polyline: MKPolyline = MKPolyline.init(coordinates: coords, count: numHorizontalPictures*numVerticalPictures)
+        mapView.addOverlay(polyline)
     }
     
     
