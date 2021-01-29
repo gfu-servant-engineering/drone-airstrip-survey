@@ -176,6 +176,29 @@
                                 <rect key="frame" x="204" y="44" width="488" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-Zx-Hmo" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="29" y="267" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Connect View">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
+                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="vQi-B9-St9" kind="show" id="dJz-IV-3jL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="tQK-KI-5Tm"/>
@@ -498,7 +521,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-KA-FwT">
-                                <rect key="frame" x="-152" y="0.0" width="1200" height="200"/>
+                                <rect key="frame" x="-152" y="44" width="1200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="pby-dz-ZhJ"/>
                                 </constraints>
@@ -531,10 +554,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7Tm-DU-u6H"/>
                     <connections>
                         <outlet property="couldNotConnect" destination="rs9-r8-IBh" id="MC5-i2-7Yv"/>
                         <outlet property="retryButton" destination="Rh2-T8-tDP" id="ueV-6F-loU"/>
-                        <segue destination="jwx-2g-xGG" kind="show" identifier="toMainMenu" id="uOl-xr-doM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJe-aC-8Lu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -542,9 +565,6 @@
             <point key="canvasLocation" x="-1033" y="786"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="uOl-xr-doM"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
         <image name="MAF_LOGO_Inverted" width="1200" height="600"/>
