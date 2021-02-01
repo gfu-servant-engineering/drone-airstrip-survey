@@ -57,7 +57,7 @@
 		8475EC5324254CD300CBCDA6 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "../iOS_Mobile_SDK-2/DJISDK.framework"; sourceTree = "<group>"; };
 		84962AB3241C329F004F448E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8499544E236E0BFE007D3AF1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/admin/Desktop/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
+		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/ryan/Documents/GitHub/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
 		84D9446A236AA17F00FFF8C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84D9446C236AA1B000FFF8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		84D98B942341A0D400433960 /* MAF2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAF2.app; sourceTree = BUILT_PRODUCTS_DIR; };
