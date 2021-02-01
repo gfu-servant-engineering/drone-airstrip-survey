@@ -281,7 +281,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         mission.flightPathMode = .normal
         mission.finishedAction = DJIWaypointMissionFinishedAction.noAction
 
-        guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
+        guard let missionOperator:DJIWaypointMissionOperator = Optional(missionControl.waypointMissionOperator()) else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
             
             return
@@ -353,7 +353,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
             return
         }
-        guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
+        guard let missionOperator:DJIWaypointMissionOperator = Optional(missionControl.waypointMissionOperator()) else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
             return
         }

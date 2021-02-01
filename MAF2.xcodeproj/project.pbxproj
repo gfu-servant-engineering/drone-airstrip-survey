@@ -57,7 +57,7 @@
 		8475EC5324254CD300CBCDA6 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "../iOS_Mobile_SDK-2/DJISDK.framework"; sourceTree = "<group>"; };
 		84962AB3241C329F004F448E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8499544E236E0BFE007D3AF1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/ryan/Documents/GitHub/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
+		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/patrickehleringer/Documents/Classes/ENGR/381/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
 		84D9446A236AA17F00FFF8C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84D9446C236AA1B000FFF8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		84D98B942341A0D400433960 /* MAF2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAF2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,7 +304,7 @@
 				TargetAttributes = {
 					84D98B932341A0D400433960 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = M4Y3CJ85V9;
+						DevelopmentTeam = X3UU3F6NQ4;
 						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
@@ -686,7 +686,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4Y3CJ85V9;
+				DEVELOPMENT_TEAM = X3UU3F6NQ4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,7 +698,7 @@
 				INFOPLIST_FILE = MAF2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MAF2-Josh";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MAF2-Patrick";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -717,7 +717,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4Y3CJ85V9;
+				DEVELOPMENT_TEAM = X3UU3F6NQ4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -729,7 +729,7 @@
 				INFOPLIST_FILE = MAF2/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MAF2-Josh";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MAF2-Patrick";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app requests location information</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requests location information</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app requests location information</string>
 	<key>Allow Arbitrary Loads</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -39,6 +33,12 @@
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>This app uses bluetooth data.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requests location information</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app requests location information</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app requests location information</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
