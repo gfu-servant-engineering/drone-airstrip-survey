@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sIu-Fo-Ldy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sIu-Fo-Ldy">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,7 +31,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ixE-47-g19">
                                 <rect key="frame" x="371" y="343" width="203" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor"/>
                                 <segments>
                                     <segment title="CameraMode"/>
                                     <segment title="RecordMode"/>
@@ -39,17 +40,17 @@
                                     <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="Kyx-Uv-LEJ"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
                                 <rect key="frame" x="725" y="343" width="111" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Record"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
                                 <rect key="frame" x="85" y="344" width="106" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Capture"/>
                                 <connections>
@@ -57,8 +58,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="lVo-zW-Oab"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
                         </userDefinedRuntimeAttributes>
@@ -83,10 +84,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkn-bj-mIp" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="311" y="198" width="274" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkn-bj-mIp" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="453" y="233" width="349" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Drone Survey">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,21 +95,14 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="YKu-Ji-h8V" kind="show" id="0vM-LA-hLV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqK-Cs-WTm" userLabel="View Images" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="311" y="340" width="274" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqK-Cs-WTm" userLabel="View Images" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="273.66666666666669" y="343" width="349.00000000000006" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="View Images">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -118,18 +111,11 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whe-Mq-cuu" userLabel="Map Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="311" y="267" width="274" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whe-Mq-cuu" userLabel="Map Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="453" y="288" width="349" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Map Configuration">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -138,21 +124,14 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="FXC-Fx-Yst" kind="show" id="wD2-c6-vGF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-jm-CwW" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="29" y="198" width="274" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-jm-CwW" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="94" y="233" width="349" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Camera View">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,25 +140,17 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="hzG-zT-JAJ" kind="show" id="3Yf-VT-z6U"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="MAF_LOGO_Inverted" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-vK-zsw">
-                                <rect key="frame" x="204" y="44" width="488" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" image="MAF_LOGO_Inverted" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-vK-zsw">
+                                <rect key="frame" x="-152" y="64" width="1200" height="139"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-Zx-Hmo" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="29" y="267" width="274" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-Zx-Hmo" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="94" y="288" width="349" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Connect View">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,20 +159,35 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="vQi-B9-St9" kind="show" id="dJz-IV-3jL"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="tQK-KI-5Tm"/>
+                        <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qhc-jm-CwW" firstAttribute="bottom" secondItem="rkn-bj-mIp" secondAttribute="bottom" id="0MB-L4-UTf"/>
+                            <constraint firstItem="tQK-KI-5Tm" firstAttribute="bottom" secondItem="RqK-Cs-WTm" secondAttribute="bottom" constant="20" id="3vW-Hd-r3n"/>
+                            <constraint firstItem="RqK-Cs-WTm" firstAttribute="top" secondItem="Whe-Mq-cuu" secondAttribute="bottom" constant="25" id="6Ba-iW-Gxf"/>
+                            <constraint firstItem="Whe-Mq-cuu" firstAttribute="top" secondItem="rkn-bj-mIp" secondAttribute="bottom" constant="25" id="7L5-bY-NXo"/>
+                            <constraint firstItem="uzR-Zx-Hmo" firstAttribute="width" secondItem="Whe-Mq-cuu" secondAttribute="width" id="JEh-Ol-AqW"/>
+                            <constraint firstItem="qhc-jm-CwW" firstAttribute="leading" secondItem="tQK-KI-5Tm" secondAttribute="leading" constant="50" id="N4I-on-Wk1"/>
+                            <constraint firstItem="Whe-Mq-cuu" firstAttribute="leading" secondItem="uzR-Zx-Hmo" secondAttribute="trailing" constant="10" id="PFF-7O-gmd"/>
+                            <constraint firstItem="rkn-bj-mIp" firstAttribute="top" secondItem="Pun-vK-zsw" secondAttribute="bottom" constant="30" id="TlH-Cq-mp4"/>
+                            <constraint firstItem="tQK-KI-5Tm" firstAttribute="trailing" secondItem="rkn-bj-mIp" secondAttribute="trailing" constant="50" id="UhM-dw-bOq"/>
+                            <constraint firstItem="RqK-Cs-WTm" firstAttribute="width" secondItem="Whe-Mq-cuu" secondAttribute="width" id="ZKY-TC-JT2"/>
+                            <constraint firstItem="uzR-Zx-Hmo" firstAttribute="top" secondItem="qhc-jm-CwW" secondAttribute="bottom" constant="25" id="a2x-vU-r0O"/>
+                            <constraint firstItem="tQK-KI-5Tm" firstAttribute="trailing" secondItem="Whe-Mq-cuu" secondAttribute="trailing" constant="50" id="b7R-Qv-IzK"/>
+                            <constraint firstItem="uzR-Zx-Hmo" firstAttribute="leading" secondItem="tQK-KI-5Tm" secondAttribute="leading" constant="50" id="dcP-f6-RGy"/>
+                            <constraint firstItem="rkn-bj-mIp" firstAttribute="leading" secondItem="qhc-jm-CwW" secondAttribute="trailing" constant="10" id="eVH-aM-nYY"/>
+                            <constraint firstItem="qhc-jm-CwW" firstAttribute="width" secondItem="rkn-bj-mIp" secondAttribute="width" id="eZT-5E-vwW"/>
+                            <constraint firstItem="qhc-jm-CwW" firstAttribute="top" secondItem="rkn-bj-mIp" secondAttribute="top" id="iJh-Ij-4x3"/>
+                            <constraint firstItem="RqK-Cs-WTm" firstAttribute="centerX" secondItem="tQK-KI-5Tm" secondAttribute="centerX" id="obm-ti-a4h"/>
+                            <constraint firstItem="Pun-vK-zsw" firstAttribute="centerX" secondItem="tQK-KI-5Tm" secondAttribute="centerX" id="v6U-Yz-q03"/>
+                            <constraint firstItem="Pun-vK-zsw" firstAttribute="top" secondItem="tQK-KI-5Tm" secondAttribute="top" constant="20" id="xO7-by-Zre"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="bDj-Xk-20l"/>
                 </viewController>
@@ -217,10 +203,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-fG-hOs" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-fG-hOs" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="311" y="366" width="274" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Drone Survey">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -260,8 +246,8 @@
                                 <color key="selectedSegmentTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Eeh-dq-LgH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Drone Survey" id="rBJ-ok-ZxR"/>
                 </viewController>
@@ -295,13 +281,13 @@
                                     <outletCollection property="gestureRecognizers" destination="Hwf-f1-7UT" appends="YES" id="vUQ-GF-2v8"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-d2-xeP" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-d2-xeP" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="551" y="350" width="150" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Load the Mission">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -322,18 +308,18 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXP-lL-BLD">
                                 <rect key="frame" x="64" y="78" width="377" height="264"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="725" y="350" width="150" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start the Mission">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -344,13 +330,13 @@
                                     <action selector="startTheMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="RVC-Ig-Mct"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="373" y="350" width="150" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Clear the Waypoints">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -362,8 +348,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TsG-Km-9ZZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map Select" id="mjM-aI-JOb"/>
                     <connections>
@@ -396,13 +382,13 @@
                                 <rect key="frame" x="310" y="44" width="522" height="296"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-hs-unz" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-hs-unz" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="310" y="348" width="248" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Center on Current Location">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -410,13 +396,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="588" y="348" width="248" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Save Mission Details">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -476,8 +462,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="KUn-Rh-dkR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="yhk-tM-Pq2"/>
                     <connections>
@@ -532,9 +518,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
                                 <rect key="frame" x="366" y="336" width="165" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
                                 <state key="normal" title="Retry">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -543,7 +529,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vZy-KA-FwT" firstAttribute="top" secondItem="bZF-tW-Quq" secondAttribute="top" id="1Ob-O0-uT1"/>
                             <constraint firstItem="rs9-r8-IBh" firstAttribute="centerY" secondItem="Sa3-3e-wKP" secondAttribute="centerY" id="GKM-F0-gzQ"/>
@@ -552,7 +539,6 @@
                             <constraint firstItem="bZF-tW-Quq" firstAttribute="bottom" secondItem="Rh2-T8-tDP" secondAttribute="bottom" constant="40" id="kJU-vr-c08"/>
                             <constraint firstItem="Rh2-T8-tDP" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="mKB-03-mWQ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
                     </view>
                     <navigationItem key="navigationItem" id="7Tm-DU-u6H"/>
                     <connections>
@@ -565,8 +551,64 @@
             <point key="canvasLocation" x="-1033" y="786"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="OBV-fG-hOs">
+            <size key="intrinsicContentSize" width="99" height="30"/>
+        </designable>
+        <designable name="PPA-QZ-72g">
+            <size key="intrinsicContentSize" width="150" height="30"/>
+        </designable>
+        <designable name="RqK-Cs-WTm">
+            <size key="intrinsicContentSize" width="93" height="30"/>
+        </designable>
+        <designable name="Whe-Mq-cuu">
+            <size key="intrinsicContentSize" width="136" height="30"/>
+        </designable>
+        <designable name="d6C-d2-xeP">
+            <size key="intrinsicContentSize" width="123" height="30"/>
+        </designable>
+        <designable name="h6x-hs-unz">
+            <size key="intrinsicContentSize" width="199" height="30"/>
+        </designable>
+        <designable name="ohv-lW-aUC">
+            <size key="intrinsicContentSize" width="125" height="30"/>
+        </designable>
+        <designable name="psE-iz-owy">
+            <size key="intrinsicContentSize" width="148" height="30"/>
+        </designable>
+        <designable name="qhc-jm-CwW">
+            <size key="intrinsicContentSize" width="97" height="30"/>
+        </designable>
+        <designable name="rkn-bj-mIp">
+            <size key="intrinsicContentSize" width="99" height="30"/>
+        </designable>
+        <designable name="uzR-Zx-Hmo">
+            <size key="intrinsicContentSize" width="102" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
         <image name="MAF_LOGO_Inverted" width="1200" height="600"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
