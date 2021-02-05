@@ -265,14 +265,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="syI-g6-eIa">
-                                <rect key="frame" x="338" y="64" width="534" height="269"/>
+                                <rect key="frame" x="298" y="64" width="534" height="269"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Hwf-f1-7UT" appends="YES" id="vUQ-GF-2v8"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-d2-xeP" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="521" y="343" width="168" height="30"/>
+                                <rect key="frame" x="481" y="343" width="168" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Load the Mission">
@@ -294,14 +294,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXP-lL-BLD">
-                                <rect key="frame" x="64" y="92.333333333333329" width="269" height="240.66666666666669"/>
+                                <rect key="frame" x="64" y="92.333333333333329" width="229" height="240.66666666666669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="704" y="343" width="168" height="30"/>
+                                <rect key="frame" x="664" y="343" width="168" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start the Mission">
@@ -317,7 +317,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="338" y="343" width="168" height="30"/>
+                                <rect key="frame" x="298" y="343" width="168" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
@@ -345,13 +345,13 @@
                             <constraint firstItem="syI-g6-eIa" firstAttribute="leading" secondItem="psE-iz-owy" secondAttribute="leading" id="AJW-UB-EBs"/>
                             <constraint firstItem="psE-iz-owy" firstAttribute="width" secondItem="d6C-d2-xeP" secondAttribute="width" id="ER6-z2-T6Z"/>
                             <constraint firstItem="psE-iz-owy" firstAttribute="top" secondItem="d6C-d2-xeP" secondAttribute="top" id="Lmt-ED-dEi"/>
-                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="trailing" secondItem="syI-g6-eIa" secondAttribute="trailing" constant="-20" id="MWH-Ga-laD"/>
+                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="trailing" secondItem="syI-g6-eIa" secondAttribute="trailing" constant="20" id="MWH-Ga-laD"/>
                             <constraint firstItem="TsG-Km-9ZZ" firstAttribute="bottom" secondItem="ohv-lW-aUC" secondAttribute="bottom" constant="20" id="NaQ-V6-HBu"/>
                             <constraint firstItem="d6C-d2-xeP" firstAttribute="top" secondItem="ohv-lW-aUC" secondAttribute="top" id="O6h-ez-fmq"/>
                             <constraint firstItem="ohv-lW-aUC" firstAttribute="leading" secondItem="d6C-d2-xeP" secondAttribute="trailing" constant="15" id="Xvs-CW-QO3"/>
                             <constraint firstItem="syI-g6-eIa" firstAttribute="top" secondItem="TsG-Km-9ZZ" secondAttribute="top" constant="20" id="dJ3-Rp-oGo"/>
                             <constraint firstItem="d6C-d2-xeP" firstAttribute="bottom" secondItem="ohv-lW-aUC" secondAttribute="bottom" id="f67-0P-0Zs"/>
-                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="trailing" secondItem="ohv-lW-aUC" secondAttribute="trailing" constant="-20" id="ihf-oM-3lS"/>
+                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="trailing" secondItem="ohv-lW-aUC" secondAttribute="trailing" constant="20" id="ihf-oM-3lS"/>
                             <constraint firstItem="syI-g6-eIa" firstAttribute="leading" secondItem="xXP-lL-BLD" secondAttribute="trailing" constant="5" id="jRj-Uu-XOp"/>
                             <constraint firstItem="fVw-8h-HGA" firstAttribute="leading" secondItem="TsG-Km-9ZZ" secondAttribute="leading" constant="20" id="lIJ-3q-A0u"/>
                             <constraint firstItem="xXP-lL-BLD" firstAttribute="top" secondItem="fVw-8h-HGA" secondAttribute="bottom" constant="8" symbolic="YES" id="lug-Oj-Lc7"/>

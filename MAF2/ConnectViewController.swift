@@ -19,7 +19,8 @@ class ConnectViewController: UIViewController {
     /* this method registers the app. If it fails to load correctly, you can push
      the button to call is again. */
     @IBAction func retry(_ sender: Any) {
-        DroneControl.setup(completion: {(success:Bool) -> Void in
+        // update when no longer needing viewController in DroneControl
+        DroneControl.setup(self, completion: {(success:Bool) -> Void in
             if success {
                 self.showAlertViewWithTitle(title: "SetUp Success", withMessage: "it set up correctly." )
                 self.performSegue(withIdentifier: "toMainMenu", sender: nil)
