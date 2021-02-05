@@ -514,20 +514,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-KA-FwT">
-                                <rect key="frame" x="-152" y="44" width="1200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="pby-dz-ZhJ"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-KA-FwT">
+                                <rect key="frame" x="-152" y="43.999999999999986" width="1200" height="228.66666666666663"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could Not Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-r8-IBh">
-                                <rect key="frame" x="375" y="197" width="146" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
-                                <rect key="frame" x="366" y="336" width="165" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
+                                <rect key="frame" x="375" y="343" width="146" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <state key="normal" title="Retry">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -536,16 +527,25 @@
                                     <action selector="retry:" destination="vQi-B9-St9" eventType="touchUpInside" id="m9V-CS-u1c"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could Not Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-r8-IBh">
+                                <rect key="frame" x="375" y="297.66666666666669" width="146" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vZy-KA-FwT" firstAttribute="top" secondItem="bZF-tW-Quq" secondAttribute="top" id="1Ob-O0-uT1"/>
-                            <constraint firstItem="rs9-r8-IBh" firstAttribute="centerY" secondItem="Sa3-3e-wKP" secondAttribute="centerY" id="GKM-F0-gzQ"/>
+                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="centerX" secondItem="bZF-tW-Quq" secondAttribute="centerX" id="Mnt-Wl-hIq"/>
+                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="width" secondItem="rs9-r8-IBh" secondAttribute="width" id="Nmn-Ol-Ojm"/>
+                            <constraint firstItem="rs9-r8-IBh" firstAttribute="top" secondItem="vZy-KA-FwT" secondAttribute="bottom" constant="25" id="XbJ-IZ-REa"/>
                             <constraint firstItem="vZy-KA-FwT" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="aPJ-6M-LBu"/>
                             <constraint firstItem="rs9-r8-IBh" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="dLc-Uu-FdU"/>
-                            <constraint firstItem="bZF-tW-Quq" firstAttribute="bottom" secondItem="Rh2-T8-tDP" secondAttribute="bottom" constant="40" id="kJU-vr-c08"/>
                             <constraint firstItem="Rh2-T8-tDP" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="mKB-03-mWQ"/>
+                            <constraint firstItem="bZF-tW-Quq" firstAttribute="bottom" secondItem="Rh2-T8-tDP" secondAttribute="bottom" constant="20" id="pD0-Y0-YTT"/>
+                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="top" secondItem="rs9-r8-IBh" secondAttribute="bottom" constant="25" id="xwt-kT-zEd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7Tm-DU-u6H"/>
