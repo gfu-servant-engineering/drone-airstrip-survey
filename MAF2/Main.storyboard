@@ -409,20 +409,9 @@
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="588" y="348" width="248" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save Mission Details">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="13"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="centerOnLocation:" destination="FXC-Fx-Yst" eventType="touchUpInside" id="ijh-Ey-3uX"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5m-aI-CDN">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
@@ -475,18 +464,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="588" y="348" width="248" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save Mission Details">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveMissionDetails:" destination="FXC-Fx-Yst" eventType="touchUpInside" id="eWS-PQ-Ydm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="KUn-Rh-dkR"/>
                     </view>
                     <navigationItem key="navigationItem" id="yhk-tM-Pq2"/>
                     <connections>
-                        <outlet property="centerOnLocation" destination="h6x-hs-unz" id="6HA-qC-UIo"/>
+                        <outlet property="centerOnLocation" destination="h6x-hs-unz" id="XXA-VQ-QQM"/>
                         <outlet property="latitudeDisp" destination="qpy-TQ-8zy" id="Hfd-TP-dBI"/>
                         <outlet property="longitudeDisp" destination="F56-3l-GTI" id="PVT-gN-M3R"/>
                         <outlet property="mapView" destination="4pz-zs-9u6" id="5qo-4d-mt8"/>
                         <outlet property="missionType" destination="Y6g-NK-GFQ" id="g3D-yX-aVm"/>
-                        <outlet property="saveMissionDetails" destination="PPA-QZ-72g" id="RkN-9M-5CY"/>
+                        <outlet property="saveMissionDetails" destination="PPA-QZ-72g" id="aRB-v2-zb4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osY-dl-51E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -35,6 +35,8 @@ class ConfigureMissionController: UIViewController, CLLocationManagerDelegate, U
     @IBOutlet weak var missionType: UIPickerView!
     @IBOutlet weak var centerOnLocation: RoundButton!
     @IBOutlet weak var saveMissionDetails: RoundButton!
+    
+    
     var pickerData: [String] = [String]()
     
     // lat and log variables
@@ -61,8 +63,24 @@ class ConfigureMissionController: UIViewController, CLLocationManagerDelegate, U
         centerMapOnLocation(location: initialLocation)
     }
     
-    @IBAction func saveMissionDetails(_ sender: Any)
-    {
+    /** files are located at: /Users/admin/Library/Developer/CoreSimulator/Devices/03294EA3-FF7E-4D14-8BF5-1B3B282DDDD6/data/Containers/Data/Application/A2879762-8397-4CF8-8E9F-8490E539A22D/Documents
+     */
+    @IBAction func saveMissionDetails(_ sender: Any) {
+        //writes data to a json file
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = URL(fileURLWithPath: "myFile", relativeTo: directoryURL).appendingPathExtension("json")
+        let myString = "spicy"
+        let data = myString.data(using: .utf8)
+        print(directoryURL)
+        do
+        {
+            try data!.write(to: fileURL)
+        }
+        catch
+        {
+            //pop up an alert
+            self.showAlertViewWithTitle(title: "Error", withMessage: "Failed to Save Mission.")
+        }
     }
     
     override func viewDidLoad() {
@@ -82,6 +100,17 @@ class ConfigureMissionController: UIViewController, CLLocationManagerDelegate, U
         
         latitudeDisp.text = String(currentLat)
         longitudeDisp.text = String(currentLong)
+    }
+    
+    // show the message as a pop up window in the app
+    func showAlertViewWithTitle(title:String, withMessage message:String ) {
+        print("Starting showAlertViewWithTitle()...")
+        
+        let alert:UIAlertController = UIAlertController(title:title, message:message, preferredStyle:UIAlertController.Style.alert)
+        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
+        alert.addAction(okAction)
+        self.present(alert, animated:true, completion:nil)
+        print("...Finished showAlertWithTitle()")
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

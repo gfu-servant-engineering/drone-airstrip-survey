@@ -30,10 +30,12 @@ class DroneControl : NSObject, DJISDKManagerDelegate {
     
     func productConnected(_ product:DJIBaseProduct?) {
         self.product = product
-        if let product = product {
+        if product != nil
+        {
             completion(true)
-            
-        } else {
+        }
+        else
+        {
             completion(false)
         }
     }

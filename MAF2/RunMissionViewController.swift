@@ -104,7 +104,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     func centerOnLocation(_ sender: Any)
     {
         zoomUserLocation(locationManager)
-        print("ran the damn function")
         let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
         centerMapOnLocation(location: initialLocation)
     }
