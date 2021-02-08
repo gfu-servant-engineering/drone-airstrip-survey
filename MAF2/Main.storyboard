@@ -303,10 +303,10 @@
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-d2-xeP" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="481" y="343" width="168" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Load the Mission">
-                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -332,10 +332,10 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="664" y="343" width="168" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start the Mission">
-                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -348,11 +348,11 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="298" y="343" width="168" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Clear the Waypoints">
-                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -363,9 +363,15 @@
                                     <action selector="clearTheWaypoints:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="g3V-5O-Twt"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6g-NK-GFQ">
+                                <rect key="frame" x="60" y="89" width="233" height="246"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pickerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TsG-Km-9ZZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.25882352939999997" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ohv-lW-aUC" firstAttribute="top" secondItem="syI-g6-eIa" secondAttribute="bottom" constant="10" id="1G8-cs-h2b"/>
                             <constraint firstItem="psE-iz-owy" firstAttribute="bottom" secondItem="d6C-d2-xeP" secondAttribute="bottom" id="2fC-vY-4Be"/>
@@ -395,6 +401,7 @@
                         <outlet property="loadTheMission" destination="d6C-d2-xeP" id="633-wc-8fz"/>
                         <outlet property="logTextView" destination="xXP-lL-BLD" id="wYn-sH-4G2"/>
                         <outlet property="mapView" destination="syI-g6-eIa" id="KOm-HX-nnj"/>
+                        <outlet property="missionType" destination="Y6g-NK-GFQ" id="VVy-4n-MQX"/>
                         <outlet property="operatorStateLabel" destination="fVw-8h-HGA" id="nPN-LL-4dK"/>
                         <outlet property="startTheMission" destination="ohv-lW-aUC" id="vxz-qG-f61"/>
                     </connections>
@@ -433,11 +440,6 @@
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-<<<<<<< HEAD
-                                <connections>
-                                    <action selector="centerOnLocation:" destination="FXC-Fx-Yst" eventType="touchUpInside" id="ijh-Ey-3uX"/>
-                                </connections>
-=======
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="588" y="348" width="248" height="45"/>
@@ -452,7 +454,6 @@
                                         <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
->>>>>>> c3a7ef46bdd68684a088c62e208dd2835a6e5f46
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5m-aI-CDN">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
@@ -473,10 +474,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6g-NK-GFQ">
-                                <rect key="frame" x="55" y="99" width="171" height="145"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MON-n6-HFi">
                                 <rect key="frame" x="55" y="301" width="63" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -505,35 +502,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="588" y="348" width="248" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save Mission Details">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="13"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveMissionDetails:" destination="FXC-Fx-Yst" eventType="touchUpInside" id="eWS-PQ-Ydm"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KUn-Rh-dkR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="yhk-tM-Pq2"/>
                     <connections>
-                        <outlet property="centerOnLocation" destination="h6x-hs-unz" id="XXA-VQ-QQM"/>
+                        <outlet property="centerOnLocation" destination="h6x-hs-unz" id="6HA-qC-UIo"/>
                         <outlet property="latitudeDisp" destination="qpy-TQ-8zy" id="Hfd-TP-dBI"/>
                         <outlet property="longitudeDisp" destination="F56-3l-GTI" id="PVT-gN-M3R"/>
                         <outlet property="mapView" destination="4pz-zs-9u6" id="5qo-4d-mt8"/>
-                        <outlet property="missionType" destination="Y6g-NK-GFQ" id="g3D-yX-aVm"/>
-                        <outlet property="saveMissionDetails" destination="PPA-QZ-72g" id="aRB-v2-zb4"/>
+                        <outlet property="saveMissionDetails" destination="PPA-QZ-72g" id="RkN-9M-5CY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osY-dl-51E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
