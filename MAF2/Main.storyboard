@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sIu-Fo-Ldy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sIu-Fo-Ldy">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +30,7 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ixE-47-g19">
                                 <rect key="frame" x="371" y="343" width="203" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor"/>
+                                <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="CameraMode"/>
                                     <segment title="RecordMode"/>
@@ -40,17 +39,17 @@
                                     <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="Kyx-Uv-LEJ"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
                                 <rect key="frame" x="725" y="343" width="111" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Record"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
                                 <rect key="frame" x="85" y="344" width="106" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Capture"/>
                                 <connections>
@@ -58,8 +57,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="lVo-zW-Oab"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="lVo-zW-Oab"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
                         </userDefinedRuntimeAttributes>
@@ -74,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2p-rn-VfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-992" y="2025"/>
+            <point key="canvasLocation" x="-70" y="1978"/>
         </scene>
         <!--Home-->
         <scene sceneID="XlQ-xQ-BXM">
@@ -84,110 +83,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkn-bj-mIp" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="453" y="233" width="349" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkn-bj-mIp" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="311" y="198" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" +  Drone Survey">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="New Mission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="YKu-Ji-h8V" kind="show" id="0vM-LA-hLV"/>
+                                    <segue destination="YKu-Ji-h8V" kind="show" id="4Yh-PV-4aC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqK-Cs-WTm" userLabel="View Images" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="273.66666666666669" y="343" width="349.00000000000006" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqK-Cs-WTm" userLabel="View Images" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="311" y="340" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" +  View Images">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="View Images">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whe-Mq-cuu" userLabel="Map Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="453" y="288" width="349" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whe-Mq-cuu" userLabel="Map Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="311" y="267" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" +  Map Configuration">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Load Mission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="FXC-Fx-Yst" kind="show" id="wD2-c6-vGF"/>
+                                    <segue destination="kVV-oA-nGZ" kind="show" id="Bci-np-ips"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-jm-CwW" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="94" y="233" width="349" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-jm-CwW" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="29" y="198" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" +  Camera View">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Camera View">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="hzG-zT-JAJ" kind="show" id="3Yf-VT-z6U"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" image="MAF_LOGO_Inverted" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-vK-zsw">
-                                <rect key="frame" x="-152" y="64" width="1200" height="139"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="MAF_LOGO_Inverted" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-vK-zsw">
+                                <rect key="frame" x="204" y="44" width="488" height="168"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-Zx-Hmo" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="94" y="288" width="349" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzR-Zx-Hmo" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="29" y="267" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title=" +  Connect View">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Connect View">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="7"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.0" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
+                                        <color key="value" red="0.84465640779999995" green="0.51457053419999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -195,35 +200,50 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="tQK-KI-5Tm"/>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="qhc-jm-CwW" firstAttribute="bottom" secondItem="rkn-bj-mIp" secondAttribute="bottom" id="0MB-L4-UTf"/>
-                            <constraint firstItem="tQK-KI-5Tm" firstAttribute="bottom" secondItem="RqK-Cs-WTm" secondAttribute="bottom" constant="20" id="3vW-Hd-r3n"/>
-                            <constraint firstItem="RqK-Cs-WTm" firstAttribute="top" secondItem="Whe-Mq-cuu" secondAttribute="bottom" constant="25" id="6Ba-iW-Gxf"/>
-                            <constraint firstItem="Whe-Mq-cuu" firstAttribute="top" secondItem="rkn-bj-mIp" secondAttribute="bottom" constant="25" id="7L5-bY-NXo"/>
-                            <constraint firstItem="uzR-Zx-Hmo" firstAttribute="width" secondItem="Whe-Mq-cuu" secondAttribute="width" id="JEh-Ol-AqW"/>
-                            <constraint firstItem="qhc-jm-CwW" firstAttribute="leading" secondItem="tQK-KI-5Tm" secondAttribute="leading" constant="50" id="N4I-on-Wk1"/>
-                            <constraint firstItem="Whe-Mq-cuu" firstAttribute="leading" secondItem="uzR-Zx-Hmo" secondAttribute="trailing" constant="10" id="PFF-7O-gmd"/>
-                            <constraint firstItem="rkn-bj-mIp" firstAttribute="top" secondItem="Pun-vK-zsw" secondAttribute="bottom" constant="30" id="TlH-Cq-mp4"/>
-                            <constraint firstItem="tQK-KI-5Tm" firstAttribute="trailing" secondItem="rkn-bj-mIp" secondAttribute="trailing" constant="50" id="UhM-dw-bOq"/>
-                            <constraint firstItem="RqK-Cs-WTm" firstAttribute="width" secondItem="Whe-Mq-cuu" secondAttribute="width" id="ZKY-TC-JT2"/>
-                            <constraint firstItem="uzR-Zx-Hmo" firstAttribute="top" secondItem="qhc-jm-CwW" secondAttribute="bottom" constant="25" id="a2x-vU-r0O"/>
-                            <constraint firstItem="tQK-KI-5Tm" firstAttribute="trailing" secondItem="Whe-Mq-cuu" secondAttribute="trailing" constant="50" id="b7R-Qv-IzK"/>
-                            <constraint firstItem="uzR-Zx-Hmo" firstAttribute="leading" secondItem="tQK-KI-5Tm" secondAttribute="leading" constant="50" id="dcP-f6-RGy"/>
-                            <constraint firstItem="rkn-bj-mIp" firstAttribute="leading" secondItem="qhc-jm-CwW" secondAttribute="trailing" constant="10" id="eVH-aM-nYY"/>
-                            <constraint firstItem="qhc-jm-CwW" firstAttribute="width" secondItem="rkn-bj-mIp" secondAttribute="width" id="eZT-5E-vwW"/>
-                            <constraint firstItem="qhc-jm-CwW" firstAttribute="top" secondItem="rkn-bj-mIp" secondAttribute="top" id="iJh-Ij-4x3"/>
-                            <constraint firstItem="RqK-Cs-WTm" firstAttribute="centerX" secondItem="tQK-KI-5Tm" secondAttribute="centerX" id="obm-ti-a4h"/>
-                            <constraint firstItem="Pun-vK-zsw" firstAttribute="centerX" secondItem="tQK-KI-5Tm" secondAttribute="centerX" id="v6U-Yz-q03"/>
-                            <constraint firstItem="Pun-vK-zsw" firstAttribute="top" secondItem="tQK-KI-5Tm" secondAttribute="top" constant="20" id="xO7-by-Zre"/>
-                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tQK-KI-5Tm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="bDj-Xk-20l"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvn-SX-ohg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-60.267857142857139" y="785.50724637681162"/>
+        </scene>
+        <!--LoadMission-->
+        <scene sceneID="m68-bI-Xfc">
+            <objects>
+                <viewController title="LoadMission" id="kVV-oA-nGZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yet-Wi-3ut">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="int-AN-Ws8" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="377" y="288" width="150" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Select Mission">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clearTheWaypoints:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="tTj-iB-FIj"/>
+                                    <segue destination="YKu-Ji-h8V" kind="show" id="aUV-ZR-CB7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ghO-Lg-l2A"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Load Mission" id="M81-Bb-VIG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldW-td-4D8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="-26"/>
         </scene>
         <!--Pre Flight-->
         <scene sceneID="i5O-dh-Arh">
@@ -233,10 +253,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-fG-hOs" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-fG-hOs" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="311" y="366" width="274" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Drone Survey">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -276,17 +296,17 @@
                                 <color key="selectedSegmentTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Eeh-dq-LgH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Drone Survey" id="rBJ-ok-ZxR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARI-cp-aFU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Su9-ob-y1n" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="781" y="1000"/>
+            <point key="canvasLocation" x="776" y="1687"/>
         </scene>
-        <!--Map Select-->
+        <!--Run Mission-->
         <scene sceneID="plB-S2-CbM">
             <objects>
                 <viewController id="YKu-Ji-h8V" customClass="RunMissionViewController" customModule="MAF2" customModuleProvider="target" sceneMemberID="viewController">
@@ -294,19 +314,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="syI-g6-eIa">
-                                <rect key="frame" x="298" y="64" width="534" height="269"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t1m-aT-SMd">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Select Map" leftItemsSupplementBackButton="YES" id="Zaf-Xh-grv">
+                                        <barButtonItem key="backBarButtonItem" title="Back" id="L1c-cq-oa9"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="syI-g6-eIa">
+                                <rect key="frame" x="449" y="44" width="426" height="298"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Hwf-f1-7UT" appends="YES" id="vUQ-GF-2v8"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-d2-xeP" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="481" y="343" width="168" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6C-d2-xeP" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="551" y="350" width="150" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Load the Mission">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -317,25 +348,45 @@
                                     <action selector="loadTheMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="Wl9-Jk-KdO"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Operator State: X" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-8h-HGA">
-                                <rect key="frame" x="63.999999999999986" y="64" width="132.66666666666663" height="20.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Operator State: X" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-8h-HGA">
+                                <rect key="frame" x="64" y="44" width="377" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXP-lL-BLD">
-                                <rect key="frame" x="64" y="92.333333333333329" width="229" height="240.66666666666669"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xXP-lL-BLD">
+                                <rect key="frame" x="64" y="78" width="377" height="264"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="664" y="343" width="168" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6D-Nb-bYK" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="64" y="275" width="248" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Center on Current Location">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="centerOnCurrentLocation:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="g6r-V6-1uH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="725" y="350" width="150" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start the Mission">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -346,13 +397,13 @@
                                     <action selector="startTheMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="RVC-Ig-Mct"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="298" y="343" width="168" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="373" y="350" width="150" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Clear the Waypoints">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -363,46 +414,41 @@
                                     <action selector="clearTheWaypoints:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="g3V-5O-Twt"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y6g-NK-GFQ">
-                                <rect key="frame" x="60" y="89" width="233" height="246"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1e-WN-z3W" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="64" y="348" width="248" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save Mission Details">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveMissionDetails:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="Xg1-BV-VvH"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0L5-Gs-pAj">
+                                <rect key="frame" x="103" y="100" width="171" height="145"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.25882352939999997" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.0" green="0.76862745099999996" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pickerView>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TsG-Km-9ZZ"/>
-                        <color key="backgroundColor" red="0.25882352939999997" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="ohv-lW-aUC" firstAttribute="top" secondItem="syI-g6-eIa" secondAttribute="bottom" constant="10" id="1G8-cs-h2b"/>
-                            <constraint firstItem="psE-iz-owy" firstAttribute="bottom" secondItem="d6C-d2-xeP" secondAttribute="bottom" id="2fC-vY-4Be"/>
-                            <constraint firstItem="d6C-d2-xeP" firstAttribute="leading" secondItem="psE-iz-owy" secondAttribute="trailing" constant="15" id="3Ti-aG-cLv"/>
-                            <constraint firstItem="d6C-d2-xeP" firstAttribute="width" secondItem="ohv-lW-aUC" secondAttribute="width" id="44C-GP-5SL"/>
-                            <constraint firstItem="xXP-lL-BLD" firstAttribute="bottom" secondItem="syI-g6-eIa" secondAttribute="bottom" id="7Nb-wq-cS7"/>
-                            <constraint firstItem="syI-g6-eIa" firstAttribute="leading" secondItem="psE-iz-owy" secondAttribute="leading" id="AJW-UB-EBs"/>
-                            <constraint firstItem="psE-iz-owy" firstAttribute="width" secondItem="d6C-d2-xeP" secondAttribute="width" id="ER6-z2-T6Z"/>
-                            <constraint firstItem="psE-iz-owy" firstAttribute="top" secondItem="d6C-d2-xeP" secondAttribute="top" id="Lmt-ED-dEi"/>
-                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="trailing" secondItem="syI-g6-eIa" secondAttribute="trailing" constant="20" id="MWH-Ga-laD"/>
-                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="bottom" secondItem="ohv-lW-aUC" secondAttribute="bottom" constant="20" id="NaQ-V6-HBu"/>
-                            <constraint firstItem="d6C-d2-xeP" firstAttribute="top" secondItem="ohv-lW-aUC" secondAttribute="top" id="O6h-ez-fmq"/>
-                            <constraint firstItem="ohv-lW-aUC" firstAttribute="leading" secondItem="d6C-d2-xeP" secondAttribute="trailing" constant="15" id="Xvs-CW-QO3"/>
-                            <constraint firstItem="syI-g6-eIa" firstAttribute="top" secondItem="TsG-Km-9ZZ" secondAttribute="top" constant="20" id="dJ3-Rp-oGo"/>
-                            <constraint firstItem="d6C-d2-xeP" firstAttribute="bottom" secondItem="ohv-lW-aUC" secondAttribute="bottom" id="f67-0P-0Zs"/>
-                            <constraint firstItem="TsG-Km-9ZZ" firstAttribute="trailing" secondItem="ohv-lW-aUC" secondAttribute="trailing" constant="20" id="ihf-oM-3lS"/>
-                            <constraint firstItem="syI-g6-eIa" firstAttribute="leading" secondItem="xXP-lL-BLD" secondAttribute="trailing" constant="5" id="jRj-Uu-XOp"/>
-                            <constraint firstItem="fVw-8h-HGA" firstAttribute="leading" secondItem="TsG-Km-9ZZ" secondAttribute="leading" constant="20" id="lIJ-3q-A0u"/>
-                            <constraint firstItem="xXP-lL-BLD" firstAttribute="top" secondItem="fVw-8h-HGA" secondAttribute="bottom" constant="8" symbolic="YES" id="lug-Oj-Lc7"/>
-                            <constraint firstItem="xXP-lL-BLD" firstAttribute="leading" secondItem="TsG-Km-9ZZ" secondAttribute="leading" constant="20" id="q4n-US-bHB"/>
-                            <constraint firstItem="fVw-8h-HGA" firstAttribute="top" secondItem="TsG-Km-9ZZ" secondAttribute="top" constant="20" id="rxa-rC-H9C"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map Select" id="mjM-aI-JOb"/>
+                    <navigationItem key="navigationItem" title="Run Mission" id="mjM-aI-JOb"/>
                     <connections>
+                        <outlet property="centerOnCurrentLocation" destination="q6D-Nb-bYK" id="c3a-Ne-Jig"/>
                         <outlet property="clearTheWaypoints" destination="psE-iz-owy" id="re4-JL-5lV"/>
                         <outlet property="loadTheMission" destination="d6C-d2-xeP" id="633-wc-8fz"/>
                         <outlet property="logTextView" destination="xXP-lL-BLD" id="wYn-sH-4G2"/>
                         <outlet property="mapView" destination="syI-g6-eIa" id="KOm-HX-nnj"/>
-                        <outlet property="missionType" destination="Y6g-NK-GFQ" id="VVy-4n-MQX"/>
+                        <outlet property="missionType" destination="0L5-Gs-pAj" id="EOK-gc-2MY"/>
                         <outlet property="operatorStateLabel" destination="fVw-8h-HGA" id="nPN-LL-4dK"/>
+                        <outlet property="saveMissionDetails" destination="E1e-WN-z3W" id="wVV-yp-peS"/>
                         <outlet property="startTheMission" destination="ohv-lW-aUC" id="vxz-qG-f61"/>
                     </connections>
                 </viewController>
@@ -413,111 +459,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="671.65178571428567" y="-26.086956521739133"/>
-        </scene>
-        <!--Configure Mission Controller-->
-        <scene sceneID="woy-mC-7XG">
-            <objects>
-                <viewController id="FXC-Fx-Yst" customClass="ConfigureMissionController" customModule="MAF2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wvk-pv-we1">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4pz-zs-9u6">
-                                <rect key="frame" x="310" y="44" width="522" height="296"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6x-hs-unz" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="310" y="348" width="248" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Center on Current Location">
-                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="13"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PPA-QZ-72g" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="588" y="348" width="248" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Save Mission Details">
-                                    <color key="titleColor" systemColor="groupTableViewBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="13"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5m-aI-CDN">
-                                <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Configure Mission" id="qWg-Hf-T0d">
-                                        <barButtonItem key="backBarButtonItem" title="HOME" id="5NB-Nz-DES" userLabel="Configure Mission"/>
-                                        <connections>
-                                            <outlet property="titleView" destination="Y5m-aI-CDN" id="6Sj-fJ-JXu"/>
-                                        </connections>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select Mission Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3I-KI-CJa">
-                                <rect key="frame" x="64" y="70" width="153" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MON-n6-HFi">
-                                <rect key="frame" x="55" y="301" width="63" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiL-kw-79X">
-                                <rect key="frame" x="168" y="301" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpy-TQ-8zy">
-                                <rect key="frame" x="38" y="348" width="109" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F56-3l-GTI">
-                                <rect key="frame" x="155" y="348" width="109" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="KUn-Rh-dkR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="yhk-tM-Pq2"/>
-                    <connections>
-                        <outlet property="centerOnLocation" destination="h6x-hs-unz" id="6HA-qC-UIo"/>
-                        <outlet property="latitudeDisp" destination="qpy-TQ-8zy" id="Hfd-TP-dBI"/>
-                        <outlet property="longitudeDisp" destination="F56-3l-GTI" id="PVT-gN-M3R"/>
-                        <outlet property="mapView" destination="4pz-zs-9u6" id="5qo-4d-mt8"/>
-                        <outlet property="saveMissionDetails" destination="PPA-QZ-72g" id="RkN-9M-5CY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="osY-dl-51E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="12.723214285714285" y="2024.6376811594205"/>
+            <point key="canvasLocation" x="674" y="851"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o22-fc-PMM">
@@ -546,12 +488,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-KA-FwT">
-                                <rect key="frame" x="-152" y="43.999999999999986" width="1200" height="228.66666666666663"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-KA-FwT">
+                                <rect key="frame" x="-152" y="44" width="1200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="pby-dz-ZhJ"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="999" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
-                                <rect key="frame" x="375" y="343" width="146" height="30"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could Not Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-r8-IBh">
+                                <rect key="frame" x="375" y="197" width="146" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
+                                <rect key="frame" x="366" y="336" width="165" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Retry">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -559,26 +510,17 @@
                                     <action selector="retry:" destination="vQi-B9-St9" eventType="touchUpInside" id="m9V-CS-u1c"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could Not Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-r8-IBh">
-                                <rect key="frame" x="375" y="297.66666666666669" width="146" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="vZy-KA-FwT" firstAttribute="top" secondItem="bZF-tW-Quq" secondAttribute="top" id="1Ob-O0-uT1"/>
-                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="centerX" secondItem="bZF-tW-Quq" secondAttribute="centerX" id="Mnt-Wl-hIq"/>
-                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="width" secondItem="rs9-r8-IBh" secondAttribute="width" id="Nmn-Ol-Ojm"/>
-                            <constraint firstItem="rs9-r8-IBh" firstAttribute="top" secondItem="vZy-KA-FwT" secondAttribute="bottom" constant="25" id="XbJ-IZ-REa"/>
+                            <constraint firstItem="rs9-r8-IBh" firstAttribute="centerY" secondItem="Sa3-3e-wKP" secondAttribute="centerY" id="GKM-F0-gzQ"/>
                             <constraint firstItem="vZy-KA-FwT" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="aPJ-6M-LBu"/>
                             <constraint firstItem="rs9-r8-IBh" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="dLc-Uu-FdU"/>
+                            <constraint firstItem="bZF-tW-Quq" firstAttribute="bottom" secondItem="Rh2-T8-tDP" secondAttribute="bottom" constant="40" id="kJU-vr-c08"/>
                             <constraint firstItem="Rh2-T8-tDP" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="mKB-03-mWQ"/>
-                            <constraint firstItem="bZF-tW-Quq" firstAttribute="bottom" secondItem="Rh2-T8-tDP" secondAttribute="bottom" constant="20" id="pD0-Y0-YTT"/>
-                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="top" secondItem="rs9-r8-IBh" secondAttribute="bottom" constant="25" id="xwt-kT-zEd"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
                     </view>
                     <navigationItem key="navigationItem" id="7Tm-DU-u6H"/>
                     <connections>
@@ -591,64 +533,11 @@
             <point key="canvasLocation" x="-1033" y="786"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="OBV-fG-hOs">
-            <size key="intrinsicContentSize" width="99" height="30"/>
-        </designable>
-        <designable name="PPA-QZ-72g">
-            <size key="intrinsicContentSize" width="150" height="30"/>
-        </designable>
-        <designable name="RqK-Cs-WTm">
-            <size key="intrinsicContentSize" width="114" height="30"/>
-        </designable>
-        <designable name="Whe-Mq-cuu">
-            <size key="intrinsicContentSize" width="157" height="30"/>
-        </designable>
-        <designable name="d6C-d2-xeP">
-            <size key="intrinsicContentSize" width="123" height="30"/>
-        </designable>
-        <designable name="h6x-hs-unz">
-            <size key="intrinsicContentSize" width="199" height="30"/>
-        </designable>
-        <designable name="ohv-lW-aUC">
-            <size key="intrinsicContentSize" width="125" height="30"/>
-        </designable>
-        <designable name="psE-iz-owy">
-            <size key="intrinsicContentSize" width="168" height="18"/>
-        </designable>
-        <designable name="qhc-jm-CwW">
-            <size key="intrinsicContentSize" width="117" height="30"/>
-        </designable>
-        <designable name="rkn-bj-mIp">
-            <size key="intrinsicContentSize" width="120" height="30"/>
-        </designable>
-        <designable name="uzR-Zx-Hmo">
-            <size key="intrinsicContentSize" width="122" height="30"/>
-        </designable>
-    </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="aUV-ZR-CB7"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
         <image name="MAF_LOGO_Inverted" width="1200" height="600"/>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>

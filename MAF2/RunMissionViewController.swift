@@ -5,7 +5,7 @@ import MapKit
 import CoreLocation
 import DJIUXSDK
 
-class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // the states based on the raw values
     let operatorStateNames = [
@@ -25,19 +25,25 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     @IBOutlet weak var clearTheWaypoints: RoundButton!
     @IBOutlet weak var loadTheMission: RoundButton!
     @IBOutlet weak var startTheMission: RoundButton!
+    @IBOutlet weak var missionType: UIPickerView!
+    @IBOutlet weak var centerOnCurrentLocation: RoundButton!
+    @IBOutlet weak var saveMissionDetails: RoundButton!
     
     var uiUpdateTimer: Timer!
     
     // lat and log variables
     var currentLat = 45.307067  // newberg ore
     var currentLong = -122.96015
+    var altitude:Float = 50
     // the region of the map that's it automatically zoomed into.
     let regionRadius: CLLocationDistance = 200
     // the mission for the to add the waypoints to
     let mission:DJIMutableWaypointMission = DJIMutableWaypointMission.init()
+    var flightLine: MKPolyline = MKPolyline()
     
     // to zoom in on user location
     var locationManager = CLLocationManager()
+    var pickerData: [String] = [String]()
 
     // print out info to a text box inside the app
     func debugPrint(_ text: String) {
@@ -67,14 +73,24 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             guard let missionControl = DJISDKManager.missionControl() else { return }
             let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator()
             
-            DispatchQueue.main.async {
-                self.operatorStateLabel.text = String(format: "Operator State: %@",
-                                                      self.operatorStateNames[missionOperator.currentState.rawValue])
+            DispatchQueue.main.async
+            {
+                self.operatorStateLabel.text = String(format: "Operator State: %@", self.operatorStateNames[missionOperator.currentState.rawValue])
             }
         })
         
+        self.missionType.delegate = self
+        self.missionType.dataSource = self
+            
+        pickerData = ["Altitude: 50ft", "Altitude: 100ft", "Altitude: 200ft"]
+        
         // Inform the user how to add a waypoint
         self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        uiUpdateTimer.invalidate()
     }
     
     func mapView(_ mapview: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer!
@@ -89,53 +105,132 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         return nil
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        uiUpdateTimer.invalidate()
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    //Adjusts the altitude for the mission based on what the user picked
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        altitude = 50
+        if (row == 1)
+        {
+            altitude = 100
+        }
+        else if (row == 2)
+        {
+            altitude = 200
+        }
+        //Just for debugging.
+        print(altitude);
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        let location: CLLocationCoordinate2D = manager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 45.307067, longitude: -122.96015)
+        let location: CLLocationCoordinate2D = locations[locations.endIndex].coordinate
         currentLat = location.latitude
         currentLong = location.longitude
     }
     
-    func centerOnLocation(_ sender: Any)
+    // centers the map to the current location
+    @IBAction func centerOnCurrentLocation(_ sender: Any)
     {
         zoomUserLocation(locationManager)
-        print("ran the damn function")
-        let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
-        centerMapOnLocation(location: initialLocation)
+        let newLocation = CLLocation(latitude: currentLat, longitude: currentLong)
+        centerMapOnLocation(location: newLocation)
     }
     
-    // zoom the map in to the location that we choose. Right now it is hard coded for newberg OR
-    func centerMapOnLocation(location: CLLocation) {
-        print("spicy2")
+    // zoom the map in to the location that we choose.
+    func centerMapOnLocation(location: CLLocation)
+    {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        print("spicy2")
+
         mapView.setRegion(coordinateRegion, animated: true)
-        print("spicy2")
 
         // make that map satellite view
         mapView.mapType = MKMapType.satellite
     }
 
     
-    func zoomUserLocation(_ manager: CLLocationManager) {
-        print("spicy3")
+    func zoomUserLocation(_ manager: CLLocationManager)
+    {
         guard let currentLocation: CLLocationCoordinate2D = manager.location?.coordinate else {
             return
         }
-        print("spicy3")
         currentLat = currentLocation.latitude
         currentLong = currentLocation.longitude
-        print("spicy3")
-        print(currentLat)
 
         mapView.setCenter(currentLocation, animated: true)
     }
 
+    /* Appends the mission details to a json File named DroneMissions
+     * Missions are stored in the Device/Simulator's default directory.
+     */
+    @IBAction func saveMissionDetails(_ sender: Any)
+    {
+        //Get a name for the mission
+        let alert = UIAlertController(title: "Mission Name", message: "specify a name for the new mission", preferredStyle: .alert)
+        
+        alert.addTextField
+        {
+            (missionName) in missionName.text = ""
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {action in self.saveMission(alert: alert)}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //just a helper method
+    func saveMission(alert: UIAlertController)
+    {
+        let missionName:String = alert.textFields![0].text ?? "None"
+        
+        //Set up directory
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = URL(fileURLWithPath: "DroneMissions", relativeTo: directoryURL).appendingPathExtension("json")
+        print(directoryURL)
+        
+        //Set up data to be stored
+        let waypoints = mission.allWaypoints()
+        let mission_struct:Mission = Mission(name: missionName, altitude: altitude, coord1lat: waypoints[0].coordinate.latitude, coord1lon: waypoints[0].coordinate.longitude, coord2lat: waypoints[waypoints.endIndex - 1].coordinate.latitude, coord2lon: waypoints[waypoints.endIndex - 1].coordinate.longitude)
+        var mission_array: [Mission]
+        
+        //Collect current missions
+        do
+        {
+            //Prevent overwriting by storing current contents of the missions
+            //file to an array. Then append the new mission to the array.
+            let data = try Data(contentsOf: fileURL, options: [])
+            mission_array = try JSONDecoder().decode([Mission].self, from: data)
+            mission_array.append(mission_struct)
+        }
+        catch
+        {
+            mission_array = [mission_struct]
+        }
+        
+        //Append new mission
+        do
+        {
+            let jsonData = try JSONEncoder().encode(mission_array)
+            let jsonString = String(data: jsonData, encoding: String.Encoding.utf8)
+            print(jsonString!)
+            try jsonData.write(to: fileURL, options: [])
+            self.showAlertViewWithTitle(title: "Success", withMessage: "Successfully Saved Mission")
+        }
+        catch
+        {
+            self.showAlertViewWithTitle(title: "Error", withMessage: "Failed to Save Mission")
+        }
+    }
+    
     /* Adds a waypoint when the map gets a long press.
      A maximum of two waypoints can be added by the user. Later, the rest of the waypoints are added to fill in the rectangle. */
     @IBAction func longPressAddWayPoint(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -155,10 +250,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                 // put a annotation on the map for the user
                 addAnnotationOnLocation(pointedCoordinate: newCoordinate)
                 
-                // create the waypoint
                 let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
                 // set the altitude, auto speed and max speed
-                wayPoint.altitude = 50
+                wayPoint.altitude = altitude
                 wayPoint.speed = 10
                 // add the new waypoint
                 if (CLLocationCoordinate2DIsValid(wayPoint.coordinate)) {
@@ -178,8 +272,8 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
      of box. This method fills out the rest of the "box" shape automatically. The box has a predetermined
      width and the only thing the user can change is the length. As of now,
      if the user want to move the box, he must clear all the waypoints and start again. Make the runway approx. 60 meters wide.*/
-    func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint]) {
-        
+    func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint])
+    {
         let x1 = cornersOfBox[0].coordinate.longitude
         let x2 = cornersOfBox[1].coordinate.longitude
         let y1 = cornersOfBox[0].coordinate.latitude
@@ -219,51 +313,44 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                 mission.add(waypoint)
             }
         }
-        let polyline: MKPolyline = MKPolyline.init(coordinates: coords, count: numHorizontalPictures*numVerticalPictures)
-        mapView.addOverlay(polyline)
+        flightLine = MKPolyline.init(coordinates: coords, count: numHorizontalPictures*numVerticalPictures)
+        mapView.addOverlay(flightLine)
     }
     
     
     // clear all the waypoints from the mission
-    @IBAction func clearTheWaypoints(_ sender: Any) {
-
+    @IBAction func clearTheWaypoints(_ sender: Any)
+    {
         // get and remove all the annotations in the MKMapView
         let allAnnotation = mapView.annotations
         mapView.removeAnnotations(allAnnotation)
         // remove the waypoints from the mission
         mission.removeAllWaypoints()
+        mapView.removeOverlay(flightLine)
     }
     
     // adds the waypoint symbol on the map
-    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D, waypointName: String = "waypoint") {
-        print("Starting addAnnotationOnLocation()...")
-        
+    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D, waypointName: String = "waypoint")
+    {
         let annotation = MKPointAnnotation()
         annotation.coordinate = pointedCoordinate
         annotation.title = waypointName
         
         mapView.addAnnotation(annotation)
-        
-        
-        print("... finished addAnnotationsOnLocation()")
     }
     
 
     
     // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
     @IBAction func loadTheMission(_ sender: Any) {
-        print("~~~~~\nStarting loadTheMission...")
         let MIN_WAYPOINT_NUM = 2
-        print("spicy!")
         
-//         once there are four waypoints, call the box method to add the others. if less than four, print message to add more
+        // once there are two waypoints, call the box method to add the others. if less than two, print message to add more
         if (mission.waypointCount < MIN_WAYPOINT_NUM) {
             showAlertViewWithTitle(title: "Two waypoints are required", withMessage: "You must add markers which are the corners of the box.")
         } else {
             // call the method to create a "box" shape of waypoints
             addWaypointsInBoxShape(cornersOfBox: mission.allWaypoints())
-            showAlertViewWithTitle(title: "spicy", withMessage: "super spicy") // I moved the alert to after to only see this after the waypoints should've been calculated
-            print("just finished addWaypointsInBoxShape()")
         }
         
         
@@ -281,7 +368,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         mission.flightPathMode = .normal
         mission.finishedAction = DJIWaypointMissionFinishedAction.noAction
 
-        guard let missionOperator:DJIWaypointMissionOperator = Optional(missionControl.waypointMissionOperator()) else {
+        guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
             
             return
@@ -346,17 +433,18 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     }
     // button to start the mission once it's loaded
     
-    @IBAction func startTheMission(_ sender: Any) {
+    @IBAction func startTheMission(_ sender: Any)
+    {
         // start the mission
         self.debugPrint("starting...")
         guard let missionControl = DJISDKManager.missionControl() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
             return
         }
-        guard let missionOperator:DJIWaypointMissionOperator = Optional(missionControl.waypointMissionOperator()) else {
+        guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
             return
-        }
+    }
     
         
         
