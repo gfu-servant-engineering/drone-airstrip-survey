@@ -212,7 +212,8 @@
         <!--LoadMission-->
         <scene sceneID="m68-bI-Xfc">
             <objects>
-                <viewController title="LoadMission" id="kVV-oA-nGZ" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ldW-td-4D8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController title="LoadMission" id="kVV-oA-nGZ" customClass="LoadMissionViewController" customModule="MAF2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yet-Wi-3ut">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,15 +236,21 @@
                                     <segue destination="YKu-Ji-h8V" kind="show" id="aUV-ZR-CB7"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2XJ-nq-kyO">
+                                <rect key="frame" x="89" y="135" width="171" height="145"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ghO-Lg-l2A"/>
                     </view>
                     <navigationItem key="navigationItem" title="Load Mission" id="M81-Bb-VIG"/>
+                    <connections>
+                        <outlet property="missionPicker" destination="2XJ-nq-kyO" id="wVU-iu-rbr"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ldW-td-4D8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="-26"/>
+            <point key="canvasLocation" x="674" y="12"/>
         </scene>
         <!--Pre Flight-->
         <scene sceneID="i5O-dh-Arh">
@@ -534,7 +541,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aUV-ZR-CB7"/>
+        <segue reference="4Yh-PV-4aC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>

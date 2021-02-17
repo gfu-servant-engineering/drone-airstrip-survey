@@ -10,10 +10,11 @@ import UIKit
 
 class LoadMissionViewController: UIViewController
 {
+    @IBOutlet weak var missionPicker: UIPickerView!
     var missionList: [Mission] = []
     override func viewDidLoad()
     {
-           super.viewDidLoad()
+        super.viewDidLoad()
         let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = URL(fileURLWithPath: "DroneMissions", relativeTo: directoryURL).appendingPathExtension("json")
         print(directoryURL)
@@ -59,5 +60,4 @@ class LoadMissionViewController: UIViewController
         }
         return missions
     }
-    
 }
