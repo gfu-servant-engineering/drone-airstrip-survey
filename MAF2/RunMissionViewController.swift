@@ -44,6 +44,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     // to zoom in on user location
     var locationManager = CLLocationManager()
     var pickerData: [String] = [String]()
+    
+    var fromHome = true
+    var selectedMission: Mission!
 
     // print out info to a text box inside the app
     func debugPrint(_ text: String) {
@@ -84,8 +87,42 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             
         pickerData = ["Altitude: 50ft", "Altitude: 100ft", "Altitude: 200ft"]
         
-        // Inform the user how to add a waypoint
-        self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+        //check if segueing in from home or from loadmission
+        if (fromHome)
+        {
+            // Inform the user how to add a waypoint
+            self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+        }
+        else
+        {
+            //simulate the user selecting an altitude and pressing waypoints
+            
+            //careful we don't know the picker interaction with altitude
+            var newCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedMission.coord1lat, longitude: selectedMission.coord1lon)
+            
+            // put a annotation on the map for the user
+            addAnnotationOnLocation(pointedCoordinate: newCoordinate)
+            
+            let wayPoint1:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
+            // set the altitude, auto speed and max speed
+            wayPoint1.altitude = selectedMission.altitude
+            wayPoint1.speed = 10
+            mission.add(wayPoint1)
+            
+            
+            newCoordinate = CLLocationCoordinate2D(latitude: selectedMission.coord2lat, longitude: selectedMission.coord2lon)
+            
+            addAnnotationOnLocation(pointedCoordinate: newCoordinate)
+            
+            let wayPoint2:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
+            // set the altitude, auto speed and max speed
+            wayPoint2.altitude = selectedMission.altitude
+            
+            wayPoint2.speed = 10
+            mission.add(wayPoint2)
+            
+            addWaypointsInBoxShape(cornersOfBox: mission.allWaypoints())
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,7 +171,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        let location: CLLocationCoordinate2D = locations[locations.endIndex - 1].coordinate
+        let location: CLLocationCoordinate2D = locations[locations.endIndex-1].coordinate
         currentLat = location.latitude
         currentLong = location.longitude
     }
@@ -330,7 +367,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     }
     
     // adds the waypoint symbol on the map
-    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D, waypointName: String = "waypoint")
+    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D, waypointName: String = "")
     {
         let annotation = MKPointAnnotation()
         annotation.coordinate = pointedCoordinate
@@ -368,11 +405,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         mission.flightPathMode = .normal
         mission.finishedAction = DJIWaypointMissionFinishedAction.noAction
 
-        guard let missionOperator:DJIWaypointMissionOperator = Optional(missionControl.waypointMissionOperator()) else {
-            showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
-            
-            return
-        }
+        let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator()
         
         print("waypointCount: ", self.mission.waypointCount)
         
