@@ -16,10 +16,20 @@ class ConnectViewController: UIViewController {
         retry(self)
     }
     
+//    if (productPublisher.connectionState == ConnectionState.DISCONNECTED) {
+//        Button("Connect") {
+//            productPublisher.registerWithSDK()
+//        }
+//    } else {
+//        Button("Disconnect") {
+//            productPublisher.stop()
+//        }
+//    }
+    
     /* this method registers the app. If it fails to load correctly, you can push
      the button to call is again. */
     @IBAction func retry(_ sender: Any) {
-        DroneControl.setup(completion: {(success:Bool) -> Void in
+        DroneControl.setupDrone(completion: {(success:Bool) -> Void in
             if success {
                 self.showAlertViewWithTitle(title: "SetUp Success", withMessage: "it set up correctly." )
                 self.performSegue(withIdentifier: "toMainMenu", sender: nil)
