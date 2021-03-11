@@ -20,7 +20,7 @@ class DroneControl : NSObject, ObservableObject {
     
     
     private static var droneSetUp:DroneControl? = nil
-    private var aircraft: DJIAircraft?
+    public var aircraft: DJIAircraft?
     private var completion:(Bool) -> Void
     
     public static var instance: DroneControl? {
