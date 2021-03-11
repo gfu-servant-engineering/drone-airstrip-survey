@@ -232,8 +232,24 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="clearTheWaypoints:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="tTj-iB-FIj"/>
                                     <segue destination="YKu-Ji-h8V" kind="show" id="aUV-ZR-CB7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlg-mW-gqO" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="614" y="288" width="150" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Delete Mission">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteMission:" destination="kVV-oA-nGZ" eventType="touchUpInside" id="r2Z-JY-fbC"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2XJ-nq-kyO">
@@ -248,6 +264,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sort By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irY-57-ytM">
+                                <rect key="frame" x="660" y="61" width="58" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="Mission Names"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sHF-cX-Dqy">
+                                <rect key="frame" x="596" y="105" width="187" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Date Added"/>
+                                    <segment title="Alphabetical"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortMissions:" destination="kVV-oA-nGZ" eventType="valueChanged" id="0vd-QN-40H"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ghO-Lg-l2A"/>
@@ -255,6 +290,8 @@
                     <navigationItem key="navigationItem" title="Load Mission" id="M81-Bb-VIG"/>
                     <connections>
                         <outlet property="missionPicker" destination="2XJ-nq-kyO" id="wVU-iu-rbr"/>
+                        <outlet property="selectMission" destination="int-AN-Ws8" id="sDe-7T-OuG"/>
+                        <outlet property="sortSelect" destination="sHF-cX-Dqy" id="xes-qz-AMV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -334,23 +371,6 @@
                                     <action selector="centerOnCurrentLocation:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="g6r-V6-1uH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
-                                <rect key="frame" x="725" y="350" width="150" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Start the Mission">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="13"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="startTheMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="RVC-Ig-Mct"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psE-iz-owy" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="373" y="350" width="150" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -389,8 +409,28 @@
                                 <rect key="frame" x="103" y="100" width="171" height="145"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohv-lW-aUC" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="725" y="350" width="150" height="45"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Start the Mission">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTheMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="RVC-Ig-Mct"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ohv-lW-aUC" firstAttribute="bottom" secondItem="TsG-Km-9ZZ" secondAttribute="bottom" constant="2" id="3DL-EQ-7aF"/>
+                            <constraint firstItem="ohv-lW-aUC" firstAttribute="trailing" secondItem="TsG-Km-9ZZ" secondAttribute="trailing" constant="23" id="Cop-an-7G3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TsG-Km-9ZZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Run Mission" id="mjM-aI-JOb"/>
@@ -413,7 +453,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="674" y="851"/>
+            <point key="canvasLocation" x="673.66071428571422" y="850.72463768115949"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o22-fc-PMM">

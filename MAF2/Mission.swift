@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Mission : Codable
+struct Mission : Codable, Equatable, Comparable
 {
     var name: String
     var altitude: Float
@@ -16,4 +16,11 @@ struct Mission : Codable
     var coord1lon: Double
     var coord2lat: Double
     var coord2lon: Double
+    var coord3lat: Double
+    var coord3lon: Double
+    
+    static func <(lhs: Mission, rhs: Mission) -> Bool
+    {
+        return lhs.name < rhs.name
+    }
 }
