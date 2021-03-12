@@ -453,6 +453,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             return
         }
         
+        let flightController:DJIFlightController = DJIFlightController()
+        flightController.setHomeLocation(CLLocation(latitude: mission.waypoint(at: 0)!.coordinate.latitude, longitude: mission.waypoint(at: 0)!.coordinate.latitude))
+        
         // set the heading mode, auto flight speed and max flight speed and the flightPathMode
         // when the mission is over, don't do anything.
         mission.headingMode = .auto
