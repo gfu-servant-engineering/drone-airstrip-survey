@@ -354,26 +354,22 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             //form initial vectors
             var v1 = simd_double2(x1-x0, y1-y0)
             var v2 = simd_double2(x2-x0, y2-y0)
-            //conversion factor between picture resolution and degrees
-            //subject to change later
+            
+            //determine number of pictures from resolution and vector length
+            
+            //make temporary vectors to make the spacing latitude invariant
+            //the distance per unit longitude becomes smaller the farther the distance from the equator, proportional to the cosine of the latitude.
+            let conv = 3.14159265/180 //convert degrees to radians.
+            let u1 = simd_double2((x1-x0)*cos(conv*y1), y1-y0)
+            let u2 = simd_double2((x2-x0)*cos(conv*y1), y2-y0)
             let RES: Double = 2000
-            print(RES*x0)
-            print(RES*x1)
-            print(RES*x2)
-            print(RES*y0)
-            print(RES*y1)
-            print(RES*y2)
-            let numPicturesV1: Int = Int(ceil(RES*simd_length(v1)))
-            let numPicturesV2: Int = Int(ceil(RES*simd_length(v2)))
+            let numPicturesV1: Int = Int(ceil(RES*simd_length(u1)))
+            let numPicturesV2: Int = Int(ceil(RES*simd_length(u2)))
             
             v1[0] = v1[0]/Double(numPicturesV1-1)
             v1[1] = v1[1]/Double(numPicturesV1-1)
             v2[0] = v2[0]/Double(numPicturesV2-1)
             v2[1] = v2[1]/Double(numPicturesV2-1)
-            
-            print("SPICY!!")
-            print(v1)
-            print(v2)
             
             var xcoord: CLLocationDegrees
             var ycoord: CLLocationDegrees
