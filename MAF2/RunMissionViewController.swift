@@ -398,6 +398,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                     let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
                     waypoint.altitude = altitude
                     waypoint.speed = 10
+                    waypoint.add(DJIWaypointAction(actionType: DJIWaypointActionType(rawValue: DJIWaypointActionType.shootPhoto.rawValue)!, param: 1))
                     mission.add(waypoint)
                 }
             }
