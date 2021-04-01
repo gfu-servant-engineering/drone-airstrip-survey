@@ -459,7 +459,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         mission.autoFlightSpeed = 2
         mission.maxFlightSpeed = 4
         mission.flightPathMode = .normal
-        mission.finishedAction = DJIWaypointMissionFinishedAction.noAction
+        mission.finishedAction = DJIWaypointMissionFinishedAction.goHome
 
         let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator()
         
