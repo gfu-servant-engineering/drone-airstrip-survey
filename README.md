@@ -1,5 +1,9 @@
 # drone-airstrip-survey
-- - - -
+
+## Table of Contents:
+1. [Creating a Personal App Key](#creating-a-personal-app-key)
+2. [Warnings](#warnings)
+---
 
 ## Creating a Personal App Key
 1. Go to [http://developer.dji.com](http://developer.dji.com)
@@ -23,3 +27,15 @@
 	* Click on the outermost `MAF2.xcodeproj` file
 	* Ensure that your “Team” is set to your Apple Developer account
 ![](drone-airstrip-survey/page2image450849360.png) 
+
+---
+## Warnings
+
+### In Regards to the Info.plist
+Due to everyone (should) having seperate developer accounts the personal app key and package name should all be different.
+This is completely fine, but everyone should be aware that this information is stored in the `info.plist` file.
+
+So make sure to not push your plist file to the project unless you have good reason to as it will mess up everyone else's project.  You could either setup a [.gitignore](https://git-scm.com/docs/gitignore) or just be mindful of what you are pushing/pulling.
+
+## Developing in XCode
+Unfortunately to develop swift code for an iOS application you will have to use a macOS product as XCode is the only decent ide for this type of project.  There the company macbook that one person can use, but if not everyone owns an apple device, it may be difficult to develop this project.
