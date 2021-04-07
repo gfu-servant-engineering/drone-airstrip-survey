@@ -24,8 +24,7 @@
 ## In Xcode
 1. In the `Info.plist` file, update both your App key and your Bundle Identifier to match you _personal_ key and identifier on the DJI Developer website.
 2. Click on the outermost `MAF2.xcodeproj` file
-	* Click on the outermost `MAF2.xcodeproj` file
-	* Ensure that your “Team” is set to your Apple Developer account
+3. Ensure that your “Team” is set to your Apple Developer account
 ![](drone-airstrip-survey/page2image450849360.png) 
 
 ---
