@@ -15,7 +15,7 @@
 5. Click on the blue “Create App” button
 ![](drone-airstrip-survey/page1image391114816.png) 
 6. Set the following parameters to:
-	1. Name the project with the convention `MAF-YOURNAME`
+	1. Name the project with the convention `MAF-YOURNAME` (i.e. `MAF-JOHN`)
 	2. Set the Software Platform to `iOS`
 	3. Set the Package Name: `com.MAF-Yourname` (i.e. `com.MAF-John`)
 	4. Set the Category: Agricultural Applications
@@ -34,7 +34,7 @@
 Everyone should have seperate developer accounts the personal app key and package name should all be different.
 This is completely fine, but everyone should be aware that this information is stored in the `info.plist` file.
 
-Make sure to not push your `plist` file to the project unless you have good reason to, as it will mess up everyone else's project. You could either setup a [.gitignore](https://git-scm.com/docs/gitignore) or just be mindful of what you are pushing/pulling.
+Make sure to not push your `.plist` file to the project unless you have good reason to, as it will mess up everyone else's project. You could either setup a [.gitignore](https://git-scm.com/docs/gitignore) or just be mindful of what you are pushing/pulling.
 
 ## Developing in XCode
 Unfortunately to develop Swift code for an iOS application you will have to use a macOS product as XCode is the only decent ide for this type of project, and macOS is the only OS on which you can develop an iOS application.  There is the company-provided Macbook that one person can use, but if not everyone owns an Apple device, it will be difficult to develop this project.
