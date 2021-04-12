@@ -1,9 +1,23 @@
 # drone-airstrip-survey
 
 ## Table of Contents:
-1. [Creating a Personal App Key](#creating-a-personal-app-key)
-2. [Warnings](#warnings)
+1. [Info.plist](#getting-the-plist)
+2. [Creating a Personal App Key](#creating-a-personal-app-key)
+3. [Setting up Cocoapods](#cocoapods)
+4. [Warnings](#warnings)
 ---
+
+## Getting The plist
+Due to some issues that we had over this last year we decided to remove the `info.plist` from the github as some people kept forgetting to not push it, this could easily be resolved with a .gitignore, but yeah that's up to you haha.
+That being said, if you pull the repo you won't actually have the file, so you can get it from [here](https://drive.google.com/file/d/1oHNSjfaonx-_PRQgGn077HARWynbUJ1w/view?usp=sharing) and decide if you want to add it to the repo or just use the drive.
+
+### Adding The `Info.plist` To The Project
+After grabbing the `plist` from the link, go into your project and paste it into the `Maf2/` folder, afterwards launch the project from the `MAF2.xcworkspace` file and after opening the filetree on the left, there should be the `info.plist` highlighted in red.  Click on it, and on the right hand side of Xcode, there should be:
+<br />
+![image](https://media.discordapp.net/attachments/552893768341127181/831282986863165520/unknown.png)
+<br />
+Press the folder icon and select the newly added `Info.plist`.  You should be good to go!
+
 
 ## Creating a Personal App Key
 1. Go to [http://developer.dji.com](http://developer.dji.com)
@@ -26,6 +40,16 @@
 2. Click on the outermost `MAF2.xcodeproj` file
 3. Ensure that your “Team” is set to your Apple Developer account
 ![](drone-airstrip-survey/page2image450849360.png) 
+
+## Cocoapods
+As the pods we are using is fairly large we decided to keep it out of the repository, so you'll have to go in a install them yourselves. This should only need to be done if your pod folder/`xcodeproj` is highlighted red.
+1. Open a terminal and `cd` into your repo
+2. `pod install`
+
+If you don't have cocoapods installed:
+1. Open a terminal
+2. `brew install cocoapods`
+
 
 ---
 ## Warnings
