@@ -1,9 +1,15 @@
 # drone-airstrip-survey
 
 ## Table of Contents:
-1. [Creating a Personal App Key](#creating-a-personal-app-key)
-2. [Warnings](#warnings)
+1. [Info.plist](#getting-the-plist)
+2. [Creating a Personal App Key](#creating-a-personal-app-key)
+3. [Warnings](#warnings)
 ---
+
+## Getting The plist
+Due to some issues that we had over this last year we decided to remove the `info.plist` from the github as some people kept forgetting to not push it, this could easily be resolved with a .gitignore, but yeah that's up to you haha.
+That being said, if you pull the repo you won't actually have the file, so you can get it from [here](https://drive.google.com/file/d/1oHNSjfaonx-_PRQgGn077HARWynbUJ1w/view?usp=sharing) and decide if you want to add it to the repo or just use the drive.
+
 
 ## Creating a Personal App Key
 1. Go to [http://developer.dji.com](http://developer.dji.com)
