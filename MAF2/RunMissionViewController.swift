@@ -31,20 +31,23 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     var uiUpdateTimer: Timer!
     
-    // lat and log variables
+    //default values
     var currentLat = 45.307067  // newberg ore
     var currentLong = -122.96015
     var altitude:Float = 50
+    
     // the region of the map that's it automatically zoomed into.
     let regionRadius: CLLocationDistance = 200
     // the mission for the to add the waypoints to
     let mission:DJIMutableWaypointMission = DJIMutableWaypointMission.init()
     var flightLine: MKPolyline = MKPolyline()
     
-    // to zoom in on user location
+    
     var locationManager = CLLocationManager()
     var pickerData: [String] = [String]()
     
+    //the following 8 variables are for loading in a mission from the
+    //load mission screen
     var fromHome = true
     var selectedMission: Mission!
     
@@ -87,44 +90,32 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             }
         })
         
+        //initializing altitude picker
         self.missionType.delegate = self
         self.missionType.dataSource = self
-            
         pickerData = ["Altitude: 50ft", "Altitude: 100ft", "Altitude: 200ft"]
         
-        //check if segueing in from home or from loadmission
-        if (fromHome)
+        if (fromHome) //seguing in from home screen
         {
             // Inform the user how to add a waypoint
             self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
             
             centerOnCurrentLocation(self)
         }
-        else
+        else //segueing in from load mission screen
         {
-            //mission is being loaded in
             //simulate the user selecting an altitude and pressing waypoints
+            let wayPoint1:DJIWaypoint = DJIWaypoint.init(coordinate: CLLocationCoordinate2D(latitude: selectedMission.coord1lat, longitude: selectedMission.coord1lon))
             
-            var newCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedMission.coord1lat, longitude: selectedMission.coord1lon)
+            let wayPoint2:DJIWaypoint = DJIWaypoint.init(coordinate: CLLocationCoordinate2D(latitude: selectedMission.coord2lat, longitude: selectedMission.coord2lon))
             
-            let wayPoint1:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
+            let wayPoint3:DJIWaypoint = DJIWaypoint.init(coordinate: CLLocationCoordinate2D(latitude: selectedMission.coord3lat, longitude: selectedMission.coord3lon))
             
             wayPoint1.altitude = selectedMission.altitude
-            mission.add(wayPoint1)
-            
-            
-            newCoordinate = CLLocationCoordinate2D(latitude: selectedMission.coord2lat, longitude: selectedMission.coord2lon)
-            
-            let wayPoint2:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-
             wayPoint2.altitude = selectedMission.altitude
-            mission.add(wayPoint2)
-            
-            newCoordinate = CLLocationCoordinate2D(latitude: selectedMission.coord3lat, longitude: selectedMission.coord3lon)
-            
-            let wayPoint3:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-
             wayPoint3.altitude = selectedMission.altitude
+            mission.add(wayPoint1)
+            mission.add(wayPoint2)
             mission.add(wayPoint3)
             
             loadTheMission(self)
@@ -334,20 +325,16 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         }
     }
     
-    
-    // clear all the waypoints from the mission
+    // Clear all the annotations and overlays on the map
+    //Removes all waypoints from the mission
     @IBAction func clearTheWaypoints(_ sender: Any)
     {
-        // get and remove all the annotations in the MKMapView
-        let allAnnotation = mapView.annotations
-        mapView.removeAnnotations(allAnnotation)
-        // remove the waypoints from the mission
+        mapView.removeAnnotations(mapView.annotations)
         mission.removeAllWaypoints()
         mapView.removeOverlay(flightLine)
     }
-
     
-    // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
+    // After the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
     @IBAction func loadTheMission(_ sender: Any) {
         let MIN_WAYPOINT_NUM = 2
         
@@ -359,9 +346,8 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         else
         {
             //setup
-            guard let currentLocation: CLLocationCoordinate2D = locationManager.location?.coordinate else {
-                return
-            }
+            let currentLocation = locationManager.location!.coordinate
+            
             let homeLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
             var waypointLocation: CLLocation
             var waypointList: [DJIWaypoint] = []
@@ -422,8 +408,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         mission.finishedAction = DJIWaypointMissionFinishedAction.goHome
 
         let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator()
-        
-        print("waypointCount: ", self.mission.waypointCount)
+
         
         // set the auto flight speed
         missionOperator.setAutoFlightSpeed(0.1, withCompletion: {(error:NSError?) -> () in
@@ -519,6 +504,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     /* This method fills out the "box" shape defined by the user with a space-filling flight path, adding waypoints along the way. If the user want to move the box, the waypoints must be cleared and placed again.*/
     func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint])
     {
+        clearTheWaypoints(self)
         //set altitude to waypoint altitude
         altitude = cornersOfBox[0].altitude
         //get coordinates
@@ -552,7 +538,10 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         var xcoord: CLLocationDegrees
         var ycoord: CLLocationDegrees
         var newCoord = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-        var coords: [CLLocationCoordinate2D] = []
+        var waypoint: DJIWaypoint
+        
+        var coords: [CLLocationCoordinate2D] = [ locationManager.location!.coordinate]
+        
         for i in 0...(numPicturesV1-1)
         {
             for j in 0...(numPicturesV2-1)
@@ -572,17 +561,23 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                 newCoord = CLLocationCoordinate2D(latitude: ycoord, longitude: xcoord)
                 coords.append(newCoord)
                 
+                //show users the location and ordering of mission waypoints
                 addAnnotationOnLocation(pointedCoordinate: newCoord, waypointName: String(i*numPicturesV2 + j))
-                let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
+                
+                waypoint = DJIWaypoint.init(coordinate: newCoord)
                 waypoint.altitude = altitude
                 waypoint.speed = 10
                 waypoint.add(DJIWaypointAction(actionType: DJIWaypointActionType(rawValue: DJIWaypointActionType.shootPhoto.rawValue)!, param: 1))
                 waypoint.gimbalPitch = -90
+                
                 mission.add(waypoint)
             }
         }
-        flightLine = MKPolyline.init(coordinates: coords, count: numPicturesV1*numPicturesV2)
+        //places a red line indicating the path the drone will take
+        flightLine = MKPolyline.init(coordinates: coords, count: numPicturesV1*numPicturesV2 + 1)
         mapView.addOverlay(flightLine)
+        
+        debugPrint("Number of waypoints: " + String(mission.allWaypoints().endIndex))
     }
     
     // show the message as a pop up window in the app

@@ -26,15 +26,6 @@ class LoadMissionViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let fileURL = URL(fileURLWithPath: "DroneMissions", relativeTo: directoryURL).appendingPathExtension("json")
         print(directoryURL)
         let fileManager = FileManager.default
-        missionList = decodeData(pathName: fileURL)
-        
-        //initialize picker data
-        self.missionPicker.delegate = self
-        self.missionPicker.dataSource = self
-        for mission in missionList
-        {
-            pickerData.append(mission.name)
-        }
         
         if (!fileManager.fileExists(atPath: fileURL.path))
         {
@@ -43,7 +34,23 @@ class LoadMissionViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
         else
         {
-            selectedMission = missionList[0]
+            missionList = decodeData(pathName: fileURL)
+            
+            //initialize picker data
+            self.missionPicker.delegate = self
+            self.missionPicker.dataSource = self
+            for mission in missionList
+            {
+                pickerData.append(mission.name)
+            }
+            if (!missionList.isEmpty)
+            {
+                selectedMission = missionList[0]
+            }
+            else
+            {
+                self.showAlertViewWithTitle(title: "No Missions", withMessage: "No missions exist yet. Go back and add a new mission.")
+            }
         }
     }
     
@@ -53,8 +60,13 @@ class LoadMissionViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     //updates some parameters on RunMissionViewCOntroller when segueing in
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as! RunMissionViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        //check if seguing home or to runmissionviewcontroller
+        guard let controller = segue.destination as? RunMissionViewController else
+        {
+            return
+        }
         controller.fromHome = false
         controller.selectedMission = self.selectedMission
     }
@@ -63,7 +75,7 @@ class LoadMissionViewController: UIViewController, UIPickerViewDelegate, UIPicke
         print("Starting showAlertViewWithTitle()...")
         
         let alert:UIAlertController = UIAlertController(title:title, message:message, preferredStyle:UIAlertController.Style.alert)
-        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
+        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler: {action in self.performSegue(withIdentifier: "noSavedMissions", sender: self)})
         alert.addAction(okAction)
         self.present(alert, animated:true, completion:nil)
         print("...Finished showAlertWithTitle()")
