@@ -5,7 +5,7 @@ import MapKit
 import CoreLocation
 import DJIUXSDK
 
-class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, DJICameraDelegate, UIPickerViewDelegate, DJIBaseProductDelegate, UIPickerViewDataSource {
+class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     // the states based on the raw values
     let operatorStateNames = [
@@ -31,20 +31,23 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     var uiUpdateTimer: Timer!
     
-    // lat and log variables
+    //default values
     var currentLat = 45.307067  // newberg ore
     var currentLong = -122.96015
     var altitude:Float = 50
+    
     // the region of the map that's it automatically zoomed into.
     let regionRadius: CLLocationDistance = 200
     // the mission for the to add the waypoints to
     let mission:DJIMutableWaypointMission = DJIMutableWaypointMission.init()
     var flightLine: MKPolyline = MKPolyline()
     
-    // to zoom in on user location
+    
     var locationManager = CLLocationManager()
     var pickerData: [String] = [String]()
     
+    //the following 8 variables are for loading in a mission from the
+    //load mission screen
     var fromHome = true
     var selectedMission: Mission!
     
@@ -70,8 +73,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
-        centerMapOnLocation(location: initialLocation)
         //Hide the start button until the mission has loaded
         self.startTheMission.isHidden = true
     }
@@ -89,48 +90,32 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             }
         })
         
+        //initializing altitude picker
         self.missionType.delegate = self
         self.missionType.dataSource = self
-            
         pickerData = ["Altitude: 50ft", "Altitude: 100ft", "Altitude: 200ft"]
         
-        //check if segueing in from home or from loadmission
-        if (fromHome)
+        if (fromHome) //seguing in from home screen
         {
             // Inform the user how to add a waypoint
             self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+            
+            centerOnCurrentLocation(self)
         }
-        else
+        else //segueing in from load mission screen
         {
             //simulate the user selecting an altitude and pressing waypoints
+            let wayPoint1:DJIWaypoint = DJIWaypoint.init(coordinate: CLLocationCoordinate2D(latitude: selectedMission.coord1lat, longitude: selectedMission.coord1lon))
             
-            //careful we don't know the picker interaction with altitude
-            var newCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: selectedMission.coord1lat, longitude: selectedMission.coord1lon)
+            let wayPoint2:DJIWaypoint = DJIWaypoint.init(coordinate: CLLocationCoordinate2D(latitude: selectedMission.coord2lat, longitude: selectedMission.coord2lon))
             
-            let wayPoint1:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-            // set the altitude, auto speed and max speed
+            let wayPoint3:DJIWaypoint = DJIWaypoint.init(coordinate: CLLocationCoordinate2D(latitude: selectedMission.coord3lat, longitude: selectedMission.coord3lon))
+            
             wayPoint1.altitude = selectedMission.altitude
-            wayPoint1.speed = 10
-            mission.add(wayPoint1)
-            
-            
-            newCoordinate = CLLocationCoordinate2D(latitude: selectedMission.coord2lat, longitude: selectedMission.coord2lon)
-            
-            
-            let wayPoint2:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-            // set the altitude, auto speed and max speed
             wayPoint2.altitude = selectedMission.altitude
-            
-            wayPoint2.speed = 10
-            mission.add(wayPoint2)
-            
-            newCoordinate = CLLocationCoordinate2D(latitude: selectedMission.coord3lat, longitude: selectedMission.coord3lon)
-            
-            let wayPoint3:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-            // set the altitude, auto speed and max speed
             wayPoint3.altitude = selectedMission.altitude
-            
-            wayPoint3.speed = 10
+            mission.add(wayPoint1)
+            mission.add(wayPoint2)
             mission.add(wayPoint3)
             
             loadTheMission(self)
@@ -142,16 +127,12 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         uiUpdateTimer.invalidate()
     }
     
-    func mapView(_ mapview: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer!
+    func mapView(_ mapview: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
-        if overlay is MKPolyline
-        {
-            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.red
-            polylineRenderer.lineWidth = 5
-            return polylineRenderer
-        }
-        return nil
+        let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+        polylineRenderer.strokeColor = UIColor.red
+        polylineRenderer.lineWidth = 5
+        return polylineRenderer
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -301,15 +282,36 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             {
                 let newCoordinate: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
                 
-                // put a annotation on the map for the user
-                addAnnotationOnLocation(pointedCoordinate: newCoordinate)
+                let waypoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
+                waypoint.altitude = altitude
                 
-                let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
                 // add the new waypoint
-                if (CLLocationCoordinate2DIsValid(wayPoint.coordinate)) {
-                    mission.add(wayPoint)
-                } else {
-                    print("Waypoint not valid")
+                
+                //check for consistent altitude
+                var validAltitude = true
+                for point in mission.allWaypoints()
+                {
+                    if point.altitude != altitude
+                    {
+                        validAltitude = false
+                    }
+                }
+                if !validAltitude
+                {
+                    showAlertViewWithTitle(title: "Inconsistent Altitude", withMessage: "This waypoint's altitude should be " + String(mission.allWaypoints()[0].altitude) + " to match the other point(s)")
+                }
+                else //waypoint altitude is valid
+                {
+                    if (CLLocationCoordinate2DIsValid(waypoint.coordinate))
+                    {
+                        mission.add(waypoint)
+                        // put a annotation on the map for the user
+                        addAnnotationOnLocation(pointedCoordinate: newCoordinate)
+                    }
+                    else //waypoint invalid for some other unknown reason
+                    {
+                        print("Waypoint not valid")
+                    }
                 }
             }
             else
@@ -319,22 +321,19 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         }
     }
     
-    
-    // clear all the waypoints from the mission
+    // Clear all the annotations and overlays on the map
+    //Removes all waypoints from the mission
     @IBAction func clearTheWaypoints(_ sender: Any)
     {
-        // get and remove all the annotations in the MKMapView
-        let allAnnotation = mapView.annotations
-        mapView.removeAnnotations(allAnnotation)
-        // remove the waypoints from the mission
+        mapView.removeAnnotations(mapView.annotations)
         mission.removeAllWaypoints()
         mapView.removeOverlay(flightLine)
     }
-
     
-    // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
+    // After the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
     @IBAction func loadTheMission(_ sender: Any) {
         let MIN_WAYPOINT_NUM = 2
+        let currentLocation = locationManager.location!.coordinate
         
         // once there are two waypoints, call the box method to add the others. if less than two, print message to add more
         if (mission.waypointCount < MIN_WAYPOINT_NUM)
@@ -344,15 +343,13 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         else
         {
             //setup
-            guard let currentLocation: CLLocationCoordinate2D = locationManager.location?.coordinate else {
-                return
-            }
             let homeLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
             var waypointLocation: CLLocation
             var waypointList: [DJIWaypoint] = []
             var minDistance: Double = Double.greatestFiniteMagnitude
             
             //find the closest waypoint and make it the first waypoint
+            //the starting waypoint is the first in the list.
             for waypoint in mission.allWaypoints()
             {
                 waypointLocation = CLLocation(latitude: waypoint.coordinate.latitude, longitude: waypoint.coordinate.longitude)
@@ -371,22 +368,20 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             {
                 waypointList.remove(at: 1)
                 //make the implicit corner coordinates
-                let x1 = mission.allWaypoints()[0].coordinate.latitude
-                let y2 = mission.allWaypoints()[1].coordinate.longitude
-                let newCoord = CLLocationCoordinate2D(latitude: x1, longitude: y2)
+                let x1 = mission.allWaypoints()[0].coordinate.longitude
+                let y2 = mission.allWaypoints()[1].coordinate.latitude
+                let newCoord = CLLocationCoordinate2D(latitude: y2, longitude: x1)
                 let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
                 waypointList.insert(waypoint, at: 1)
-                let x2 = mission.allWaypoints()[1].coordinate.latitude
-                let y1 = mission.allWaypoints()[0].coordinate.longitude
-                let newCoord2 = CLLocationCoordinate2D(latitude: x2, longitude: y1)
+                let x2 = mission.allWaypoints()[1].coordinate.longitude
+                let y1 = mission.allWaypoints()[0].coordinate.latitude
+                let newCoord2 = CLLocationCoordinate2D(latitude: y1, longitude: x2)
                 let waypoint2: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord2)
                 waypointList.insert(waypoint2, at: 1)
             }
             // call the method to create a "box" shape of waypoints
             addWaypointsInBoxShape(cornersOfBox: waypointList)
         }
-        
-        
         
         guard let missionControl = DJISDKManager.missionControl() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
@@ -398,7 +393,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         flightController.setHomeLocation(CLLocation(latitude: mission.waypoint(at: 0)!.coordinate.latitude, longitude: mission.waypoint(at: 0)!.coordinate.latitude))
         
         // set the heading mode, auto flight speed and max flight speed and the flightPathMode
-        // when the mission is over, don't do anything.
+        // when the mission is over, go back to the home point
         mission.headingMode = .auto
         mission.autoFlightSpeed = 2
         mission.maxFlightSpeed = 4
@@ -406,8 +401,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         mission.finishedAction = DJIWaypointMissionFinishedAction.goHome
 
         let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator()
-        
-        print("waypointCount: ", self.mission.waypointCount)
+
         
         // set the auto flight speed
         missionOperator.setAutoFlightSpeed(0.1, withCompletion: {(error:NSError?) -> () in
@@ -503,6 +497,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     /* This method fills out the "box" shape defined by the user with a space-filling flight path, adding waypoints along the way. If the user want to move the box, the waypoints must be cleared and placed again.*/
     func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint])
     {
+        clearTheWaypoints(self)
+        //set altitude to waypoint altitude
+        altitude = cornersOfBox[0].altitude
         //get coordinates
         x0 = cornersOfBox[0].coordinate.longitude
         y0 = cornersOfBox[0].coordinate.latitude
@@ -522,7 +519,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         let conv = 3.14159265/180 //convert degrees to radians.
         let u1 = simd_double2((x1-x0)*cos(conv*y1), y1-y0)
         let u2 = simd_double2((x2-x0)*cos(conv*y1), y2-y0)
-        let RES: Double = 2000
+        let RES: Double = 4000
         let numPicturesV1: Int = Int(ceil(RES*simd_length(u1)))
         let numPicturesV2: Int = Int(ceil(RES*simd_length(u2)))
         
@@ -534,7 +531,10 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         var xcoord: CLLocationDegrees
         var ycoord: CLLocationDegrees
         var newCoord = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-        var coords: [CLLocationCoordinate2D] = []
+        var waypoint: DJIWaypoint
+        
+        var coords: [CLLocationCoordinate2D] = [ locationManager.location!.coordinate]
+        
         for i in 0...(numPicturesV1-1)
         {
             for j in 0...(numPicturesV2-1)
@@ -554,17 +554,24 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                 newCoord = CLLocationCoordinate2D(latitude: ycoord, longitude: xcoord)
                 coords.append(newCoord)
                 
+                //show users the location and ordering of mission waypoints
                 addAnnotationOnLocation(pointedCoordinate: newCoord, waypointName: String(i*numPicturesV2 + j))
-                let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
+                
+                waypoint = DJIWaypoint.init(coordinate: newCoord)
                 waypoint.altitude = altitude
                 waypoint.speed = 10
                 waypoint.add(DJIWaypointAction(actionType: DJIWaypointActionType(rawValue: DJIWaypointActionType.shootPhoto.rawValue)!, param: 1))
                 waypoint.gimbalPitch = -90
+                
                 mission.add(waypoint)
             }
         }
-        flightLine = MKPolyline.init(coordinates: coords, count: numPicturesV1*numPicturesV2)
+        coords.append(locationManager.location!.coordinate)
+        //places a red line indicating the path the drone will take
+        flightLine = MKPolyline.init(coordinates: coords, count: numPicturesV1*numPicturesV2 + 2)
         mapView.addOverlay(flightLine)
+        
+        debugPrint("Number of waypoints: " + String(mission.allWaypoints().endIndex))
     }
     
     // show the message as a pop up window in the app
