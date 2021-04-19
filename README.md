@@ -62,3 +62,6 @@ Make sure to not push your `.plist` file to the project unless you have good rea
 
 ## Developing in XCode
 Unfortunately to develop Swift code for an iOS application you will have to use a macOS product as XCode is the only decent ide for this type of project, and macOS is the only OS on which you can develop an iOS application.  There is the company-provided Macbook that one person can use, but if not everyone owns an Apple device, it will be difficult to develop this project.
+
+## Advice
+After one of our final tests with the drone we were able to successfully get the drone camera to look down such that we were actually able to stitch the images together and from that we noticed some flaws to our [design](https://media.discordapp.net/attachments/552893768341127181/833840936126513182/unknown.png?width=858&height=683).  When the drone turns it will also change the resolution from horizontal to vertical, so that should be one of the key things to look into, that and look into the image overlap algorithm that we have implemented.  Unfortunately, we were unable to verify the proper resolution until too late into the development as we had a hard time initially testing this part of the app.  That being said, mess around with parameters and see where it takes you.  Also look into WebOdm for the image stitch, that should help you greatly throughout the year.
