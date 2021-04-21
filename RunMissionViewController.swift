@@ -335,14 +335,13 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         let MIN_WAYPOINT_NUM = 2
         let currentLocation = locationManager.location!.coordinate
         
-        // once there are two waypoints, call the box method to add the others. if less than two, print message to add more
+        //TODO: If waypoints are too close, it messes up mission creation later. Fix this in the 'longpressaddwaypoint' method.
         if (mission.waypointCount < MIN_WAYPOINT_NUM)
         {
             showAlertViewWithTitle(title: "At least two waypoints are required", withMessage: "You must add markers which are the corners of the box.")
         }
         else
         {
-            //setup
             let homeLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
             var waypointLocation: CLLocation
             var waypointList: [DJIWaypoint] = []
@@ -364,21 +363,23 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                     waypointList.append(waypoint)
                 }
             }
+            
+            
             if (mission.waypointCount == 2)
             {
-                waypointList.remove(at: 1)
                 //make the implicit corner coordinates
+                waypointList.remove(at: 1)
+                
                 let x1 = mission.allWaypoints()[0].coordinate.longitude
                 let y2 = mission.allWaypoints()[1].coordinate.latitude
-                let newCoord = CLLocationCoordinate2D(latitude: y2, longitude: x1)
-                let waypoint: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord)
-                waypointList.insert(waypoint, at: 1)
                 let x2 = mission.allWaypoints()[1].coordinate.longitude
                 let y1 = mission.allWaypoints()[0].coordinate.latitude
+                let newCoord = CLLocationCoordinate2D(latitude: y2, longitude: x1)
                 let newCoord2 = CLLocationCoordinate2D(latitude: y1, longitude: x2)
-                let waypoint2: DJIWaypoint = DJIWaypoint.init(coordinate: newCoord2)
-                waypointList.insert(waypoint2, at: 1)
+                waypointList.insert(DJIWaypoint.init(coordinate: newCoord), at: 1)
+                waypointList.insert(DJIWaypoint.init(coordinate: newCoord2), at: 1)
             }
+            clearTheWaypoints(self)
             // call the method to create a "box" shape of waypoints
             addWaypointsInBoxShape(cornersOfBox: waypointList)
         }
@@ -388,7 +389,8 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             return
         }
         
-        //This might not be necessary
+        //This line might not be necessary
+        //The home point is set by default unless the drone has no GPS access
         let flightController:DJIFlightController = DJIFlightController()
         flightController.setHomeLocation(CLLocation(latitude: mission.waypoint(at: 0)!.coordinate.latitude, longitude: mission.waypoint(at: 0)!.coordinate.latitude))
         
@@ -458,7 +460,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         }
         print("...Finished loadTheMission()")
     }
-    // button to start the mission once it's loaded
     
     @IBAction func startTheMission(_ sender: Any)
     {
@@ -484,7 +485,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
             } else {
                 self.debugPrint("start succeeded")
                 print("mission startMission: %@", missionOperator.currentState)
-                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
+                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress!)
             
                 
                 
@@ -497,7 +498,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
     /* This method fills out the "box" shape defined by the user with a space-filling flight path, adding waypoints along the way. If the user want to move the box, the waypoints must be cleared and placed again.*/
     func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint])
     {
-        clearTheWaypoints(self)
         //set altitude to waypoint altitude
         altitude = cornersOfBox[0].altitude
         //get coordinates
@@ -519,10 +519,13 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
         let conv = 3.14159265/180 //convert degrees to radians.
         let u1 = simd_double2((x1-x0)*cos(conv*y1), y1-y0)
         let u2 = simd_double2((x2-x0)*cos(conv*y1), y2-y0)
-        let RES: Double = 4000
+        
+        //experimental resolution. Increase this to take more pictures, have greater overlap between adjacent pictures.
+        let RES: Double = 2500
         let numPicturesV1: Int = Int(ceil(RES*simd_length(u1)))
         let numPicturesV2: Int = Int(ceil(RES*simd_length(u2)))
         
+        //making vectors
         v1[0] = v1[0]/Double(numPicturesV1-1)
         v1[1] = v1[1]/Double(numPicturesV1-1)
         v2[0] = v2[0]/Double(numPicturesV2-1)
@@ -561,6 +564,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate, MKM
                 waypoint.altitude = altitude
                 waypoint.speed = 10
                 waypoint.add(DJIWaypointAction(actionType: DJIWaypointActionType(rawValue: DJIWaypointActionType.shootPhoto.rawValue)!, param: 1))
+                //Even with this setting, the gimbal does not point down when taking photos. Instead, we had to adjust the gimbal pitch using the controller.
                 waypoint.gimbalPitch = -90
                 
                 mission.add(waypoint)
