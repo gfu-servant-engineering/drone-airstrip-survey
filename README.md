@@ -58,7 +58,7 @@ Booting up the app, there should be a `Connect View` button to the left hand sid
 As a side note you should be able to save the mission with the button and load them from the home page.
 
 ## Misc
-Here are just some tid bits that we wanted to include that:
+Here are just some tid bits that we wanted to include:
 
 ### Developing in XCode
 Unfortunately, because we are working with an iOS application, you will need to use XCode to develop on it, as that's basically the only good ide out there (which isn't saying much, you'll soon grow to hate it as much as well all did haha...).   The issue with xcode thought, or rather one of the issues, is that you have to have a macbook to be able to run it.  There is the work laptop out there for you guys to use, but if multiple of you guys don't have an apple device it might be difficult to get to work.
