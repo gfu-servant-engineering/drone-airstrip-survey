@@ -74,6 +74,7 @@ We were testing our app on one of our teammate's iphones as that was what we had
 ![](https://media.discordapp.net/attachments/552893768341127181/834941241992020028/unknown.png)
 <br />
 Hopefully from these images you can get an idea of where we were heading with the design, and if you don't like it go ahead and change it haha!
+One more thing to mention as a quick aside as while I'm writing this I'm not too sure what the state of the ui is at, in the `RoundButton.swift` class I designed a gradient for the buttons that can be changed directly in the storyboard.  With that in mind changing the colors, as well as the roundness, etc should be fairly easy.  Please contact either Josh at jhicks18@georgefox.edu or Ryan at rwittmers19@georgefox.edu for help if that ever becomes an issue!
 
 ### Algorithm
 One thing that we had a hard time testng until the end was the most important part of the app: the algorithm.  On oversight we had was the angle of the image as when the drone would turn the images would then switch from horizontal to vertical.  This lead to some pretty crappy [stitches](https://media.discordapp.net/attachments/552893768341127181/833840936126513182/unknown.png) as you can see, so keep that in mind as you look into making it better.  Another recommendation that I would have is to check out the DJI GO 4 app on the appstore.  If you launch the run the drone from our map, then switch to that app you can see the camera view, which hopefully you guys can implement into this app itself!
