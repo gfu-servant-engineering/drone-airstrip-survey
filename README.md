@@ -2,6 +2,8 @@
 
 ## Table of Contents
 1. [Setting up the Project](#setting-up-the-project)
+2. [Using the App](#using-the-app)
+3. [Misc.](#misc)
 
 ## Setting up the Project
 After cloning this project there are a couple of steps needed before you can begin working on it.  These include:
